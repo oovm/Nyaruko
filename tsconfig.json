@@ -1,0 +1,8 @@
+{
+    "references": [
+        {
+            "path": "./projects/nyar-vuepress"
+        }
+    ],
+    "files": []
+}
