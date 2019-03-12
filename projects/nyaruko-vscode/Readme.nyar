@@ -1,0 +1,52 @@
+%%%
+## 注释(Comment)
+
+- HotKey: cmt
+用 `%%%` 表示多行注释, 没有单行注释
+%%%
+
+
+
+%%%
+### 导入模块
+- HotKey: ipma
+```nyar
+Import module As alias
+```
+
+### 导入符号
+- HotKey: ipsa
+```nyar
+Import module Of { symbol As alias }
+Import (module1, module2) Of {
+    symbol1 As alias1,
+    symbol2 As alias2
+}
+```
+%%%
+
+
+
+%%%
+## 模板宏(Template)
+- HotKey: tp
+```nyar
+Template tp_name sym_name {
+
+}
+```
+%%%
+
+
+%%%
+## 函数
+- HotKey: fc
+```nyar
+name::AutoT => AutoT
+name(var) := {
+    
+}
+```
+%%%
+
+

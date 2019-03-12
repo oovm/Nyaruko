@@ -1,0 +1,39 @@
+{
+    "name": "@nyar/nyarruko-vscode",
+    "displayName": "Nyarruko",
+    "description": "",
+    "version": "0.1.0",
+    "license": "MPL 2.0",
+    "engines": {
+        "vscode": "1.0.0"
+    },
+    "scripts": {},
+    "contributes": {
+        "languages": [
+            {
+                "id": "nyar",
+                "aliases": [
+                    "Nyar"
+                ],
+                "extensions": [
+                    ".n",
+                    ".nyar"
+                ],
+                "configuration": "./syntaxes/nyar.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "nyar",
+                "scopeName": "source.nyar",
+                "path": "./syntaxes/nyar.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "nyar",
+                "path": "./syntaxes/nyar.snippets.json"
+            }
+        ]
+    }
+}
