@@ -1,0 +1,28 @@
+{
+    "scopeName": "source.nyar",
+    "information_for_contributors": [],
+    "version": "v0.0.0",
+    "patterns": [
+        {
+            "begin": "(^[ \\t]+)?(?=%)",
+            "beginCaptures": {
+                "1": {
+                    "name": "punctuation.comment.leading.nyar"
+                }
+            },
+            "end": "(?!\\G)",
+            "patterns": [
+                {
+                    "begin": "%",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.nyar"
+                        }
+                    },
+                    "end": "\\n",
+                    "name": "comment.line.number-sign.nyar"
+                }
+            ]
+        }
+    ]
+}

@@ -44,7 +44,7 @@ Template tp_name sym_name {
 ```nyar
 name::AutoT => AutoT
 name(var) := {
-    
+
 }
 ```
 %%%
