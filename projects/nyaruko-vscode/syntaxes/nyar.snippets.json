@@ -1,0 +1,212 @@
+{
+    //Comment
+    "Comment": {
+        "prefix": "Comment",
+        "body": [
+            "%%%",
+            "$0",
+            "%%%"
+        ],
+        "description": "Comment"
+    },
+    //Import
+    "Import Statement Module": {
+        "prefix": "Import Module Alias",
+        "body": [
+            "Import \"${1:module}\" Of { $2 }"
+        ],
+        "description": "Import module As alias"
+    },
+    "Import Statement Symbol": {
+        "prefix": "Import Symbol Alias",
+        "body": [
+            "Import \"${1:module}\" Of { $2 }"
+        ],
+        "description": "Import (module1, module2) Of { symbol As alias }"
+    },
+    //Template
+    "Template Reference": {
+        "prefix": "Template Reference",
+        "body": [
+            "Template ${1:name} ${2:symbol} {",
+            "\t$3",
+            "}"
+        ],
+        "description": "Template tp_name sym_name {}"
+    },
+    //Function
+    "Function Statement": {
+        "prefix": "Function Statement",
+        "body": [
+            "${1:name}::AutoT => AutoT",
+            "${1:name}(${2:var}) := {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Function Statement"
+    },
+    "Log to the console": {
+        "prefix": "log",
+        "body": [
+            "console.log($1);",
+            "$0"
+        ],
+        "description": "Log to the console"
+    },
+    "Throw Exception": {
+        "prefix": "throw",
+        "body": [
+            "throw \"$1\";",
+            "$0"
+        ],
+        "description": "Throw Exception"
+    },
+    //Loop
+    "For Range Loop": {
+        "prefix": "For Range Loop",
+        "body": [
+            "For $1 Of Range($2) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "For a In range(b){f(a)}"
+    },
+    "For Pair Loop": {
+        "prefix": "For Pair Loop",
+        "body": [
+            "For ($1) Of $2 {",
+            "\t$3",
+            "}"
+        ],
+        "description": "For (a,b) In iter(c){f(a);g(b)}"
+    },
+    //Class
+    "Class Definition": {
+        "prefix": "Class Definition",
+        "body": [
+            "Class ${1:name} {",
+            "\tConstructor(${2:parameters}) {",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ],
+        "description": "Class cs_name {}"
+    },
+    "Constructor": {
+        "prefix": "ctors",
+        "body": [
+            "/**",
+            " *",
+            " */",
+            "constructor() {",
+            "\tsuper();",
+            "\t$0",
+            "}"
+        ],
+        "description": "Constructor"
+    },
+    "Public Method Definition": {
+        "prefix": "Public Method Definition",
+        "body": [
+            "/**",
+            " * ${1:name}",
+            " */",
+            "Public ${1:name}(${2:var}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Public Method Definition"
+    },
+    "Private Method Definition": {
+        "prefix": "Private Method Definition",
+        "body": [
+            "Private ${1:name}(${2:var}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Private Method Definition"
+    },
+    "Property Getter": {
+        "prefix": "Property Getter",
+        "body": [
+            "",
+            "Property Getter ${1:value}() : ${2:string} {",
+            "\t${3:Return $0}",
+            "}",
+            ""
+        ],
+        "description": "Property getter"
+    },
+    "Property Setter": {
+        "prefix": "Property Private Setter",
+        "body": [
+            "",
+            "Private Setter ${1:value}(v : ${2:string}) {",
+            "\tthis.$3 = v;",
+            "}",
+            ""
+        ],
+        "description": "Property setter"
+    },
+    //If
+    "If Statement": {
+        "prefix": "If Statement",
+        "body": [
+            "If (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "If Statement"
+    },
+    "If-Else Statement": {
+        "prefix": "Else Statement",
+        "body": [
+            "If (${1:condition}) {",
+            "\t$0",
+            "}",
+            "Else {",
+            "\t",
+            "}"
+        ],
+        "description": "If-Else Statement"
+    },
+    "Switch Statement": {
+        "prefix": "Switch Statement",
+        "body": [
+            "Switch (${1:expr}) {",
+            "\t${2:case1}: do1",
+            "\t*: do default",
+            "}"
+        ],
+        "description": "Switch Statement"
+    },
+    "While Statement": {
+        "prefix": "while",
+        "body": [
+            "while (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "While Statement"
+    },
+    "Do-While Statement": {
+        "prefix": "dowhile",
+        "body": [
+            "do {",
+            "\t$0",
+            "} while (${1:condition});"
+        ],
+        "description": "Do-While Statement"
+    },
+    "Try-Catch Statement": {
+        "prefix": "Try-Catch Statement",
+        "body": [
+            "try {",
+            "\t$0",
+            "} catch (${1:error}) {",
+            "\t",
+            "}"
+        ],
+        "description": "Try-Catch Statement"
+    }
+}
