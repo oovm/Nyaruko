@@ -24,6 +24,20 @@
         ],
         "description": "Import (module1, module2) Of { symbol As alias }"
     },
+    "Include Statement": {
+        "prefix": "Include Statement",
+        "body": [
+            "Import \"${1:def}\" Instance"
+        ],
+        "description": "Import Definition Instance"
+    },
+    "Import Symbol All": {
+        "prefix": "Import Symbol All",
+        "body": [
+            "Import \"${1:module}\" All"
+        ],
+        "description": "Import all symbol in module1"
+    },
     //Template
     "Template Reference": {
         "prefix": "Template Reference",
@@ -74,11 +88,38 @@
     "For Pair Loop": {
         "prefix": "For Pair Loop",
         "body": [
-            "For ($1) Of $2 {",
+            "For (${1:x1,x2}) Of $2 {",
             "\t$3",
             "}"
         ],
         "description": "For (a,b) In iter(c){f(a);g(b)}"
+    },
+    "Do-While Statement": {
+        "prefix": "dowhile",
+        "body": [
+            "do {",
+            "\t$0",
+            "} while (${1:condition});"
+        ],
+        "description": "Do-While Statement"
+    },
+    "While Statement": {
+        "prefix": "while",
+        "body": [
+            "While (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "While Statement"
+    },
+    "With Statement": {
+        "prefix": "With Statement",
+        "body": [
+            "With ${1:symbol} As ${2:alias} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "While Statement"
     },
     //Class
     "Class Definition": {
@@ -92,59 +133,30 @@
         ],
         "description": "Class cs_name {}"
     },
-    "Constructor": {
-        "prefix": "ctors",
-        "body": [
-            "/**",
-            " *",
-            " */",
-            "constructor() {",
-            "\tsuper();",
-            "\t$0",
-            "}"
-        ],
-        "description": "Constructor"
-    },
-    "Public Method Definition": {
-        "prefix": "Public Method Definition",
-        "body": [
-            "/**",
-            " * ${1:name}",
-            " */",
-            "Public ${1:name}(${2:var}) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Public Method Definition"
-    },
-    "Private Method Definition": {
-        "prefix": "Private Method Definition",
-        "body": [
-            "Private ${1:name}(${2:var}) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Private Method Definition"
-    },
     "Property Getter": {
         "prefix": "Property Getter",
         "body": [
-            "",
-            "Property Getter ${1:value}() : ${2:string} {",
-            "\t${3:Return $0}",
-            "}",
-            ""
+            "Getter (self*) {",
+            "\tget() := return(self)",
+            "}"
         ],
         "description": "Property getter"
     },
     "Property Setter": {
-        "prefix": "Property Private Setter",
+        "prefix": "Property Setter",
         "body": [
-            "",
-            "Private Setter ${1:value}(v : ${2:string}) {",
-            "\tthis.$3 = v;",
-            "}",
-            ""
+            "Setter (self*) {",
+            "\tset() := $2;",
+            "}"
+        ],
+        "description": "Property setter"
+    },
+    "Property Printer": {
+        "prefix": "Property Setter",
+        "body": [
+            "Printer (self*) {",
+            "\tset() := $2;",
+            "}"
         ],
         "description": "Property setter"
     },
@@ -152,20 +164,29 @@
     "If Statement": {
         "prefix": "If Statement",
         "body": [
-            "If (${1:condition}) {",
-            "\t$0",
+            "if(${1:condition}) {",
+            "\t${2:true_then}",
             "}"
         ],
         "description": "If Statement"
     },
     "If-Else Statement": {
-        "prefix": "Else Statement",
+        "prefix": "If-Else Statement",
         "body": [
-            "If (${1:condition}) {",
-            "\t$0",
-            "}",
-            "Else {",
-            "\t",
+            "if(${1:condition}) {",
+            "\t${2:true_then},",
+            "\t${3:false_else}",
+            "}"
+        ],
+        "description": "If-Else Statement"
+    },
+    "If-Else-Otherwise Statement": {
+        "prefix": "If-Else-Otherwise Statement",
+        "body": [
+            "if(${1:condition}) {",
+            "\t${2:true_then}",
+            "\t${3:false_else},",
+            "\t${4:other_default},",
             "}"
         ],
         "description": "If-Else Statement"
@@ -173,37 +194,31 @@
     "Switch Statement": {
         "prefix": "Switch Statement",
         "body": [
-            "Switch (${1:expr}) {",
-            "\t${2:case1}: do1",
-            "\t*: do default",
+            "switch(${1:expr}) {",
+            "\t${2:case1},",
+            "\tdo something",
+            "\t*,",
+            "\tdo default",
             "}"
         ],
         "description": "Switch Statement"
     },
-    "While Statement": {
-        "prefix": "while",
+    "": {
+        "prefix": "Switch Statement",
         "body": [
-            "while (${1:condition}) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "While Statement"
+            "TaskWait(
+            \tTaskSubmit()
+            
+            )"
+        ]
     },
-    "Do-While Statement": {
-        "prefix": "dowhile",
-        "body": [
-            "do {",
-            "\t$0",
-            "} while (${1:condition});"
-        ],
-        "description": "Do-While Statement"
-    },
+    //special function
     "Try-Catch Statement": {
         "prefix": "Try-Catch Statement",
         "body": [
-            "try {",
+            "try(",
             "\t$0",
-            "} catch (${1:error}) {",
+            ").catch(${1:error}) { ",
             "\t",
             "}"
         ],

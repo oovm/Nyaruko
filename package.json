@@ -7,6 +7,8 @@
         "tsc": "tsc -b -w",
         "update": "yarn upgrade --latest",
         "deploy": "bash build/deploy.sh",
+        "web": "yarn workspace @nyar/nyar-vuepress dev",
+        "build": "yarn workspace @nyar/nyar-vuepress build",
         "lint": "tslint projects/**/*.ts",
         "lint:fix": "tslint projects/**/*.ts --fix"
     },
