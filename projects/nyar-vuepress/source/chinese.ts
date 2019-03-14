@@ -27,7 +27,7 @@ function SyntaxPages() {
 }
 
 const ChinesePage = {
-    title: '七夜',
+    title: 'Nanaya',
     description: 'Vue 驱动的静态网站生成器',
     lang: 'Chinese',
     selectText: '选择语言',

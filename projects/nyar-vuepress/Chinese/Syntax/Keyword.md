@@ -41,28 +41,34 @@ Class test {
 
 Nyar 对 Symbol 的态度与 Mathematica 类似, 不区分宏, 函数, 变量之类的.
 
-表达式 `f(a*) := b` 实际上也是个关键词宏定义.
+但是你一旦赋值, 在被 Remove 之前是不可以改变类型的.
+
+表达式模式 `f(a*) := b` 实际上是通过 `Macro` 来实现的.
 
 ```ts
-Macro SetDelay With Operator := {
-    %%% complex macro definition %%%
-}
-
-%%% f(a*, b*) := a + b %%%
-SetDelay f With (a*, b*) {
-    a + b
+Macro Symbol Pattern := Scope {
+    %%% doc
+        f(a*::Number, b*::Number) => Number := a + b 
+    ==> complex macro expand 
+    ==> Definition(
+            Typed(f, Transformed(Tuple(Type(Number), Type(Number)), Type(Number))),
+            SetDelayed(f(Pattern(a,Blank()),Pattern(b,Blank())),Plus(a,b))
+        )
+    %%%
 }
 ```
 
 ## 模板宏(Template)
 
-一种亚宏, 比 `Macro` 表现力弱, 本身一般得用 `Macro` 定义.
+一种亚宏, 比 `Macro` 表现力弱, 本身一般得用 `Macro` 来定义.
 
 模板的语法是模板名 + 符号名, 里面可以定义函数
 
 Return 一般由模板的创造者规定, 函数和变量会被先执行, 然后执行模板
 
-有子模板存在, 子模板就只能有个模板名了
+有子模板存在, 子模板就只能有个模板名了, 一般来说是 json 对象.
+
+模板作为宏的替代品而存在, 
 
 ```ts
 Template module.tp_name sym_name {
@@ -76,9 +82,7 @@ Template module.tp_name sym_name {
 }
 ```
 
-模板带 Scope, 作为宏的替代品而存在.
-
-## 类宏(Class)
+## 类定义(Class)
 
 类是个被固定了的模板, 用于生成对象.
 
@@ -89,27 +93,25 @@ Class A Extents B {
         %%% 构造函数, 注意空格, 函数是没有空格的 %%%
     }
 
-    Printer (self*) {
-        %%% 规定了如何显示类的属性, self %%%
-
-    }
-
-    Setter {
+    Setter (self*) {
         Private attribute(){
             %%% x 是个数字, 默认是2, 但外部不能修改 %%%
         }
     }
 
-    Getter {
+    Getter (self*) {
         Public attribute(){
             %%% x 对 public 可见, 如果不写的话, 会沿用上面的Private %%%
         }
     }
 
-    Operator {
+    Operator (self*) {
         %%% 用于重载算符, 没有描述符 %%%
-        plus(a*::String, b*::A){
-            a + b.toStirng()
+        print(self*::A){
+            print(self.x)
+        }
+        plus(a*::String, self*){
+            a + self.toStirng()
         }
     }
 
@@ -121,13 +123,13 @@ Class A Extents B {
 
 用于生成对象, 对象的话是个函数闭包.
 
-# Comment
+## Comment
 
 - 没有规定关键词必须大写开头, 也没有规定不能加下划线, 这只是官方统一写法
 
-# Summary
+## Summary
 
-宏关键词只有一个 (Macro), 其文法为 :
+宏关键词只有一个 (Macro), 其文法为:
 
 - **Macro.Macro**
 - **Macro.Statement**
@@ -152,8 +154,8 @@ S=Keyword.Statement, P=Keyword.Scope
 S=Keyword.Statement, P=Keyword.Scope
 
 
+<p hidden>
 - 算符宏(Operate) 算符宏给出其 Lisp 表达式
-
   - Type S P 
   - **(s::t)>>(:: s t)**
   - Type S P={S To S} 
@@ -166,6 +168,7 @@ S=Keyword.Statement, P=Keyword.Scope
   - **(f(x\*):=x)>>(:= f x\* x)**
   - Lambda P={S To S} 
   - **(lambda => expr)>>(=> lambda To expr)**
+</p>
 
 - 模板宏(Template)
 
@@ -177,15 +180,15 @@ S=Keyword.Statement, P=Keyword.Scope
   - Class S P
   - Class S Extents S P
   - Constructor S P
-  - Printer S P
-  - Setter P
-  - Getter P
-  - Operator P
+  - Setter S P
+  - Getter S P
+  - Operator S P
   - Public P
   - Private P
-  - Protect P
-  - Static P
-  - Abstract P
+  - ~~Protect P~~
+  - ~~Abstract P~~
+  - ~~Static P~~
+  - ~~Final P~~
 
 - 载入宏(Import)
 
