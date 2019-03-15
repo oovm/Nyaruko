@@ -1,127 +1,4 @@
 {
-    //Comment
-    "Comment": {
-        "prefix": "Comment",
-        "body": [
-            "%%%",
-            "$0",
-            "%%%"
-        ],
-        "description": "Comment"
-    },
-    //Import
-    "Import Statement Module": {
-        "prefix": "Import Module Alias",
-        "body": [
-            "Import \"${1:module}\" Of { $2 }"
-        ],
-        "description": "Import module As alias"
-    },
-    "Import Statement Symbol": {
-        "prefix": "Import Symbol Alias",
-        "body": [
-            "Import \"${1:module}\" Of { $2 }"
-        ],
-        "description": "Import (module1, module2) Of { symbol As alias }"
-    },
-    "Include Statement": {
-        "prefix": "Include Statement",
-        "body": [
-            "Import \"${1:def}\" Instance"
-        ],
-        "description": "Import Definition Instance"
-    },
-    "Import Symbol All": {
-        "prefix": "Import Symbol All",
-        "body": [
-            "Import \"${1:module}\" All"
-        ],
-        "description": "Import all symbol in module1"
-    },
-    //Template
-    "Template Reference": {
-        "prefix": "Template Reference",
-        "body": [
-            "Template ${1:name} ${2:symbol} {",
-            "\t$3",
-            "}"
-        ],
-        "description": "Template tp_name sym_name {}"
-    },
-    //Function
-    "Function Statement": {
-        "prefix": "Function Statement",
-        "body": [
-            "${1:name}::AutoT => AutoT",
-            "${1:name}(${2:var}) := {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Function Statement"
-    },
-    "Log to the console": {
-        "prefix": "log",
-        "body": [
-            "console.log($1);",
-            "$0"
-        ],
-        "description": "Log to the console"
-    },
-    "Throw Exception": {
-        "prefix": "throw",
-        "body": [
-            "throw \"$1\";",
-            "$0"
-        ],
-        "description": "Throw Exception"
-    },
-    //Loop
-    "For Range Loop": {
-        "prefix": "For Range Loop",
-        "body": [
-            "For $1 Of Range($2) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "For a In range(b){f(a)}"
-    },
-    "For Pair Loop": {
-        "prefix": "For Pair Loop",
-        "body": [
-            "For (${1:x1,x2}) Of $2 {",
-            "\t$3",
-            "}"
-        ],
-        "description": "For (a,b) In iter(c){f(a);g(b)}"
-    },
-    "Do-While Statement": {
-        "prefix": "dowhile",
-        "body": [
-            "do {",
-            "\t$0",
-            "} while (${1:condition});"
-        ],
-        "description": "Do-While Statement"
-    },
-    "While Statement": {
-        "prefix": "while",
-        "body": [
-            "While (${1:condition}) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "While Statement"
-    },
-    "With Statement": {
-        "prefix": "With Statement",
-        "body": [
-            "With ${1:symbol} As ${2:alias} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "While Statement"
-    },
-    //Class
     "Class Definition": {
         "prefix": "Class Definition",
         "body": [
@@ -132,6 +9,125 @@
             "}"
         ],
         "description": "Class cs_name {}"
+    },
+    "Comment": {
+        "prefix": "Comment",
+        "body": [
+            "%%%",
+            "$0",
+            "%%%"
+        ],
+        "description": "Comment"
+    },
+    "Do-While Statement": {
+        "prefix": "Do-While Statement",
+        "body": [
+            "do {",
+            "\t$0",
+            "} while (${1:condition});"
+        ],
+        "description": "Do-While Statement"
+    },
+    "For Pair Loop": {
+        "prefix": "For Pair Loop",
+        "body": [
+            "for (${1:x1,x2}) in $2 {",
+            "\t$3",
+            "}"
+        ],
+        "description": "For (a,b) In iter(c){f(a);g(b)}"
+    },
+    "For Range Loop": {
+        "prefix": "For Range Loop",
+        "body": [
+            "for $1 in range($2) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "For a In range(b){f(a)}"
+    },
+    "Function Statement": {
+        "prefix": "Function Statement",
+        "body": [
+            "${1:name}::AutoT => AutoT",
+            "${1:name}(${2:var}) := {",
+            "\t$0",
+            "\treturn()",
+            "}"
+        ],
+        "description": "Function Statement"
+    },
+    "If Statement": {
+        "prefix": "If Statement",
+        "body": [
+            "if (${1:condition}) {",
+            "\t${2:true_then}",
+            "}"
+        ],
+        "description": "If Statement"
+    },
+    "If-Else Statement": {
+        "prefix": "If-Else Statement",
+        "body": [
+            "if (${1:condition}) {",
+            "\t${2:true_then}",
+            "}",
+            "else {",
+            "\tfalse_then",
+            "}"
+        ],
+        "description": "If-Else Statement"
+    },
+    "If-Else-Otherwise Statement": {
+        "prefix": "If-Else-Otherwise Statement",
+        "body": [
+            "if (${1:condition}) {",
+            "\t${2:true_then}",
+            "}",
+            "else {",
+            "\tfalse_then",
+            "}",
+            "otherwise {",
+            "\tunknow_then",
+            "}"
+        ],
+        "description": "If Condition\tTrue/False/Unknow"
+    },
+    "Import Module Alias": {
+        "prefix": "Import Module Alias",
+        "body": [
+            "Import \"${1:module}\" As { $2 }"
+        ],
+        "description": "Import module As alias"
+    },
+    "Import Symbol Alias": {
+        "prefix": "Import Symbol Alias",
+        "body": [
+            "Import \"${1:module}\" Of { $2 }"
+        ],
+        "description": "Import (module1, module2) Of { symbol As alias }"
+    },
+    "Import Symbol All": {
+        "prefix": "Import Symbol All",
+        "body": [
+            "Import \"${1:module}\" All"
+        ],
+        "description": "Import all symbol in module1"
+    },
+    "Include Statement": {
+        "prefix": "Include Statement",
+        "body": [
+            "Import \"${1:def}\" Instance"
+        ],
+        "description": "Import Definition Instance"
+    },
+    "Log to the console": {
+        "prefix": "Log to the console",
+        "body": [
+            "console.log($1);",
+            "$0"
+        ],
+        "description": "Log to the console"
     },
     "Property Getter": {
         "prefix": "Property Getter",
@@ -145,56 +141,16 @@
     "Property Setter": {
         "prefix": "Property Setter",
         "body": [
-            "Setter (self*) {",
-            "\tset() := $2;",
-            "}"
-        ],
-        "description": "Property setter"
-    },
-    "Property Printer": {
-        "prefix": "Property Setter",
-        "body": [
             "Printer (self*) {",
             "\tset() := $2;",
             "}"
         ],
         "description": "Property setter"
     },
-    //If
-    "If Statement": {
-        "prefix": "If Statement",
-        "body": [
-            "if(${1:condition}) {",
-            "\t${2:true_then}",
-            "}"
-        ],
-        "description": "If Statement"
-    },
-    "If-Else Statement": {
-        "prefix": "If-Else Statement",
-        "body": [
-            "if(${1:condition}) {",
-            "\t${2:true_then},",
-            "\t${3:false_else}",
-            "}"
-        ],
-        "description": "If-Else Statement"
-    },
-    "If-Else-Otherwise Statement": {
-        "prefix": "If-Else-Otherwise Statement",
-        "body": [
-            "if(${1:condition}) {",
-            "\t${2:true_then}",
-            "\t${3:false_else},",
-            "\t${4:other_default},",
-            "}"
-        ],
-        "description": "If-Else Statement"
-    },
     "Switch Statement": {
         "prefix": "Switch Statement",
         "body": [
-            "switch(${1:expr}) {",
+            "switch (${1:expr}) {",
             "\t${2:case1},",
             "\tdo something",
             "\t*,",
@@ -203,25 +159,42 @@
         ],
         "description": "Switch Statement"
     },
-    "": {
-        "prefix": "Switch Statement",
+    "Template Reference": {
+        "prefix": "Template Reference",
         "body": [
-            "TaskWait(
-            \tTaskSubmit()
-            
-            )"
-        ]
+            "Template ${1:name} ${2:symbol} {",
+            "\t$3",
+            "}"
+        ],
+        "description": "Template tp_name sym_name {}"
     },
-    //special function
+    "Throw Exception": {
+        "prefix": "Throw Exception",
+        "body": [
+            "throw \"$1\";",
+            "$0"
+        ],
+        "description": "Throw Exception"
+    },
     "Try-Catch Statement": {
         "prefix": "Try-Catch Statement",
         "body": [
-            "try(",
+            "try (",
             "\t$0",
-            ").catch(${1:error}) { ",
+            ")",
+            "catch(${1:error}) { ",
             "\t",
             "}"
         ],
         "description": "Try-Catch Statement"
+    },
+    "With Statement": {
+        "prefix": "With Statement",
+        "body": [
+            "With ${1:symbol} As ${2:alias} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "While Statement"
     }
 }
