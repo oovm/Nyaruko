@@ -1,8 +1,4 @@
-const Conditions: {
-    'prefix': string;
-    'body': string[];
-    'description': string;
-}[] = []
+const Conditions: any = []
 
 const If_Condition = [
     {
@@ -43,6 +39,22 @@ const If_Condition = [
     }
 ]
 
+const Switch_Condition = [
+    {
+        'prefix': 'Switch Statement',
+        'body': [
+            'switch (${1:expr}) {',
+            '\t${2:case1},',
+            '\tdo something',
+            '\t*,',
+            '\tdo default',
+            '}'
+        ],
+        'description': 'Switch Statement'
+    }
+]
+
 export default Conditions.concat(
-    If_Condition
+    If_Condition,
+    Switch_Condition
 )
