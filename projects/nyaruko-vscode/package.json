@@ -11,7 +11,7 @@
     ],
     "scripts": {
         "vscode:prepublish": "yarn run compile",
-        "build": "tsc -p ./",
+        "build": "tsc -p ./ && ts-node ./syntaxes/snippet.ts",
         "watch": "tsc -watch -p ./",
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },

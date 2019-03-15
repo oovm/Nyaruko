@@ -3,12 +3,16 @@
     "workspaces": [
         "projects/*"
     ],
+    "engines": {
+        "vscode": "^1.32.1"
+    },
     "scripts": {
         "tsc": "tsc -b -w",
         "update": "yarn upgrade --latest",
-        "deploy": "bash build/deploy.sh",
         "web": "yarn workspace @nyar/nyar-vuepress dev",
-        "build": "yarn workspace @nyar/nyar-vuepress build",
+        "deploy": "bash build/deploy.sh",
+        "build:docs": "yarn workspace @nyar/nyar-vuepress build",
+        "build:vscode": "yarn workspace @nyar/nyaruko-vscode build && cmd build/build_vscode.cmd",
         "lint": "tslint projects/**/*.ts",
         "lint:fix": "tslint projects/**/*.ts --fix"
     },
@@ -20,5 +24,7 @@
         "tslint": "^5.13.1",
         "typescript": "^3.2.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "vscode": "^1.1.30"
+    }
 }
