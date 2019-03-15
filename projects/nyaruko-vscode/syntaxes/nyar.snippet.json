@@ -1,11 +1,30 @@
 {
-    "Class Definition": {
-        "prefix": "Class Definition",
+    "Class Define Statement": {
+        "prefix": "Class Define Statement",
         "body": [
             "Class ${1:name} {",
-            "\tConstructor(${2:parameters}) {",
-            "\t\t$0",
-            "\t}",
+            "\tself=${1:name}",
+            "}"
+        ],
+        "description": "Class cs_name {}"
+    },
+    "Class Extends Statement": {
+        "prefix": "Class Extends Statement",
+        "body": [
+            "Class ${1:name} Extend ${2:father} {",
+            "\tself=${1:name}",
+            "\tsuper=${2:father}",
+            "}"
+        ],
+        "description": "Class cs_name {}"
+    },
+    "Class Mixin Statement": {
+        "prefix": "Class Mixin Statement",
+        "body": [
+            "Class ${1:name} Mixin ${2:father} ${3:relative} {",
+            "\tself=${1:name}",
+            "\tsuper=${2:father}",
+            "\tmixin=${3:relative}",
             "}"
         ],
         "description": "Class cs_name {}"
@@ -28,19 +47,10 @@
         ],
         "description": "Do-While Statement"
     },
-    "For Pair Loop": {
-        "prefix": "For Pair Loop",
-        "body": [
-            "for (${1:x1,x2}) in $2 {",
-            "\t$3",
-            "}"
-        ],
-        "description": "For (a,b) In iter(c){f(a);g(b)}"
-    },
     "For Range Loop": {
         "prefix": "For Range Loop",
         "body": [
-            "for $1 in range($2) {",
+            "For $1 In range($2) {",
             "\t$0",
             "}"
         ],
@@ -60,7 +70,7 @@
     "If Statement": {
         "prefix": "If Statement",
         "body": [
-            "if (${1:condition}) {",
+            "If (${1:condition}) {",
             "\t${2:true_then}",
             "}"
         ],
@@ -69,10 +79,10 @@
     "If-Else Statement": {
         "prefix": "If-Else Statement",
         "body": [
-            "if (${1:condition}) {",
+            "If (${1:condition}) {",
             "\t${2:true_then}",
             "}",
-            "else {",
+            "Else {",
             "\tfalse_then",
             "}"
         ],
@@ -81,13 +91,13 @@
     "If-Else-Otherwise Statement": {
         "prefix": "If-Else-Otherwise Statement",
         "body": [
-            "if (${1:condition}) {",
+            "If (${1:condition}) {",
             "\t${2:true_then}",
             "}",
-            "else {",
+            "Else {",
             "\tfalse_then",
             "}",
-            "otherwise {",
+            "Otherwise {",
             "\tunknow_then",
             "}"
         ],
@@ -150,7 +160,7 @@
     "Switch Statement": {
         "prefix": "Switch Statement",
         "body": [
-            "switch (${1:expr}) {",
+            "Switch (${1:expr}) {",
             "\t${2:case1},",
             "\tdo something",
             "\t*,",
