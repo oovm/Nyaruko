@@ -2,15 +2,107 @@
 
 ## 数学运算符(Math Operators)
 
-- 四则运算: `+ - * /` 
-- 指数 `^` 
-- 模除 `//` 
+当双方都是 Number 类型时
+
+### 常数
+
+或者使用 unicode 输入 \:
+
+| Name         | Symbol | Remark   |
+|:-------------|:-------|:---------|
+| 虚数单位     | i      | \i       |
+| 圆周率       | π      | \pi      |
+| 自然常数     | ℯ      | \e       |
+| 无穷         | ∞      | \inf     |
+| 欧拉麦克劳林 | γ      | \eulerM  |
+| 黄金分割率   | φ      | \GoldenF |
+
+
+
+
+
+
+### 前缀式
+
+| Name     | Symbol | Remark          |
+|:---------|:-------|:----------------|
+| 相反数   | `-x`   |                 |
+| 算术取反 | `~x`   | 类型必须是 Byte |
+| 逻辑否定 | `!x`   | 类型必须是 Bool |
+
+### 后缀式
+
+详见 [数字表示](\Syntax\#2)
+
+### 中缀式
+
+| Name     | Symbol   | Remark  |
+|:---------|:---------|:--------|
+| 加法     | `x + y`  |         |
+| 减法     | `x - y`  |         |
+| 乘法     | `x * y`  |         |
+| 除法     | `x / y`  |         |
+| 整除     | `x ÷ y`  |         |
+| 模除     | `x // y` |         |
+| 指数     | `x ^ y`  |         |
+| 开根号   | `x √ y`  | y^(1/x) |
+| 按位与   | `x & y`  |         |
+| 按位或   | `x | y`  |         |
+| 逻辑异或 | `x ⊻ y`  |         |
+| 算术右移 | `x >> y` |         |
+| 算术左移 | `x << y` |         |
+	
+
+
++=  -=  *=  /=  \=  ÷=  %=  ^= 
+
+向量化 +. -. *. /.
+
+>=
+
+<=
+
+
+
+
+
+
+
+
+## 数学函数
+
+### Basic
+
+sin    cos    tan    cot    sec    csc
+
+sqrt exp log power
+
+
+### Advacne
+
+```ts
+Import Math.Advacne Instance
+```
+
+加 d 表示弧度版本
+
+sinh   cosh   tanh   coth   sech   csch
+asin   acos   atan   acot   asec   acsc
+asinh  acosh  atanh  acoth  asech  acsch
+sinc   cosc
+sind   cosd   tand   cotd   secd   cscd
+asind  acosd  atand  acotd  asecd  acscd
+
+```ts
+Import Math.Special Instance
+```
+
+https://github.com/JuliaMath/SpecialFunctions.jl/blob/master/docs/src/index.md
+
 
 还有一堆 Unicode 数学符号
 
 ## 加减乘除
-
-
 
 ## 函数(Functions)
 

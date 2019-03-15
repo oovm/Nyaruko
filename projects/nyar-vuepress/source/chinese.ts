@@ -6,7 +6,7 @@ function SyntaxPages() {
         title: 'Overview',
         collapsable: false,
         children: [
-            Syntax('Overview')
+            '/Chinese/Syntax/'
         ]
     }
     const basic = {
@@ -15,26 +15,30 @@ function SyntaxPages() {
         children: [
             Syntax('Symbol'),
             Syntax('Keyword'),
-            Syntax('Operator')
+            Syntax('Operator'),
         ]
     }
     const advance = {
         title: 'Advance',
         collapsable: true,
-        children: []
+        children: [
+            Syntax('Type'),
+            Syntax('Class'),
+            Syntax('Template'),
+        ]
     }
     return [overview, basic, advance]
 }
 
 const ChinesePage = {
-    title: 'Nanaya',
-    description: 'Vue 驱动的静态网站生成器',
+    title: 'Nyar',
+    description: 'Nyar',
     lang: 'Chinese',
     selectText: '选择语言',
     label: '简体中文',
-    editLinkText: '在 GitHub 上编辑此页',
+    editLinkText: 'Edit on GitHub',
     algolia: {},
-    lastUpdated: '最后更新',
+    lastUpdated: 'Last Upgrade',
     nav: [
         { text: '基本语法', link: '/Chinese/Syntax/Overview/' }
     ],

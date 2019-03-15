@@ -2,7 +2,7 @@
     "name": "@nyar/nyar-vuepress",
     "displayName": "Nanaya",
     "version": "0.1.0",
-    "license": "MPL 2.0",
+    "license": "MPL-2.0",
     "scripts": {
         "dev": "tsc -b && vuepress dev .",
         "build": "tsc -b && vuepress build . --no-cache"
