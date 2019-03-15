@@ -18,17 +18,17 @@
 
  常用 Mathod:
 
-| Method | Explanation |
-| ------ | ----------- |
-| load() | 载入        |
-| save() | 保存        |
+| Method   | Explanation |
+| -------- | ----------- |
+| `load()` | 载入        |
+| `save()` | 保存        |
 
 ## URL
 
-| Method | Explanation |
-| ------ | ----------- |
-| load() |             |
-| save() | 保存        |
+| Method   | Explanation |
+| -------- | ----------- |
+| `load()` |             |
+| `save()` | 保存        |
 
 ## Stream
 
@@ -43,9 +43,46 @@ Constructor 模式:
 | `Image(path*::File|URL)` | path 表示路径 |
 | `Image(array*::Tensor)`  |               |
 
+ 常用 Mathod:
+
+| Method   | Explanation           |
+| -------- | --------------------- |
+| `load()` | 如果未加载则加载/下载 |
+| `show()` | 绘图                  |
+
 ## Music
 
+Constructor 模式:
+
+| Pattern                  | Explanation   |
+| ------------------------ | ------------- |
+| `Music(path*::File|URL)` | path 表示路径 |
+
+ 常用 Mathod:
+
+| Method   | Explanation           |
+| -------- | --------------------- |
+| `load()` | 如果未加载则加载/下载 |
+| `play()` | 播放                  |
+
+
 # Math
+
+## 表达式(Expression)
+
+Constructor 模式:
+
+| Pattern                          | Explanation  |
+| -------------------------------- | ------------ |
+| `Expression(n*::Matrix[Number])` | (系数, 次数) |
+
+ 常用 Mathod:
+
+| Method            | Explanation               |
+| ----------------- | ------------------------- |
+| `to_latex()`      | 尝试给出其 $\LaTeX$ 表达式 |
+| `to_polynomial()` | 尝试特化为多项式对象      |
+
 
 ## 多项式(Polynomial)
 
@@ -90,7 +127,6 @@ Constructor 模式:
 ## NeuralNetwork.Graph
 
 ## NeuralNetwork.Data
-
 
 
 
