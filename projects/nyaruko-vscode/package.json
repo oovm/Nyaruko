@@ -5,7 +5,9 @@
     "version": "0.1.0",
     "license": "MPL-2.0",
     "main": "./dist/extension.js",
-    "engines": {},
+    "engines": {
+        "vscode": "^1.32.1"
+    },
     "categories": [
         "Snippets"
     ],

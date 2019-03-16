@@ -22,6 +22,7 @@ function SyntaxPages() {
         title: 'Advance',
         collapsable: true,
         children: [
+            Syntax('Module'),
             Syntax('Type'),
             Syntax('Class'),
             Syntax('Template'),

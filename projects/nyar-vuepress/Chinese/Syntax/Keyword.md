@@ -123,6 +123,10 @@ Class A Extents B {
 
 用于生成对象, 对象的话是个函数闭包.
 
+## Module
+
+`Using` 和 `Exposing` 用于管理模块, `As` 用于指定 `Alias`
+
 ## Comment
 
 - 没有规定关键词必须大写开头, 也没有规定不能加下划线, 这只是官方统一写法
@@ -190,16 +194,16 @@ S=Keyword.Statement, P=Keyword.Scope
   - ~~Static P~~
   - ~~Final P~~
 
-- 载入宏(Import)
+- 载入宏(Using)
 
-  - Import S
-  - Import S As S
-  - Import S With P={S As S, S As S}
-  - Import S All
-  - Import S Instance
+  - Using S
+  - Using S As S
+  - Using S With P={S As S, S As S}
+  - Using S All
+  - Using S Instance
 
-- 导出宏(Export)
+- 导出宏(Exposing)
 
-  - Export S
-  - Export S As S
-  - Export S With P={S As S, S As S}
+  - Exposing S
+  - Exposing S As S
+  - Exposing S With P={S As S, S As S}
