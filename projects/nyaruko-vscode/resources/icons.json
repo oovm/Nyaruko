@@ -1,0 +1,12 @@
+{
+    "iconDefinitions": {
+        "nyar 1.0": {
+            "iconPath": "./icon.svg"
+        }
+    },
+    "languageIds": {
+        "nyar": "nyar 1.0"
+    },
+    "folderNames": {},
+    "fileNames": {}
+}
