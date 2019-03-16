@@ -3,9 +3,9 @@ import * as EnglishPage from './english'
 
 
 const ThemeConfig = {
-    repo: 'vuejs/vuepress',
     editLinks: true,
-    //docsDir: 'packages/docs/docs',
+    repo: 'GalAster/Nyaruko',
+    docsDir: 'projects/nyar-vuepress/',
     locales: {
         '/Chinese/': ChinesePage,
         //'/English/': EnglishPage

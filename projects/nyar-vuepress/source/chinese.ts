@@ -41,7 +41,7 @@ const ChinesePage = {
     algolia: {},
     lastUpdated: 'Last Upgrade',
     nav: [
-        { text: '基本语法', link: '/Chinese/Syntax/Overview/' }
+        { text: '基本语法', link: '/Chinese/Syntax/' }
     ],
     sidebar: {
         '/Chinese/Syntax/': SyntaxPages()

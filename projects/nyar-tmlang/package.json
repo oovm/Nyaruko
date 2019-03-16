@@ -1,7 +1,7 @@
 {
     "name": "@nyar/tmlang",
     "version": "0.1.0",
-    "main": "dist/index.js",
+    "main": "source/index.ts",
     "license": "MPL 2.0",
     "dependencies": {},
     "devDependencies": {}
