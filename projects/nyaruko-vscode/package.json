@@ -11,7 +11,7 @@
     ],
     "scripts": {
         "vscode:prepublish": "yarn run compile",
-        "build": "tsc -p ./ && ts-node ./syntaxes/snippet.ts",
+        "build": "tsc -b ./ && ts-node ./syntaxes/snippet.ts",
         "watch": "tsc -watch -p ./",
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
@@ -25,6 +25,13 @@
         "@types/mocha": "^2.2.42"
     },
     "contributes": {
+        "iconThemes": [
+            {
+                "id": "nyar-icons",
+                "label": "Nyar Icons(pre-alpha)",
+                "path": "resources/icons.json"
+            }
+        ],
         "languages": [
             {
                 "id": "nyar",
