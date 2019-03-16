@@ -12,7 +12,7 @@
         "web": "yarn workspace @nyar/nyar-vuepress dev",
         "deploy": "bash build/deploy.sh",
         "build:docs": "yarn workspace @nyar/nyar-vuepress build",
-        "build:vscode": "yarn workspace @nyar/nyaruko-vscode build && cmd build/build_vscode.cmd",
+        "build:vscode": "bash scripts/build_vscode.sh",
         "lint": "tslint projects/**/*.ts",
         "lint:fix": "tslint projects/**/*.ts --fix"
     },
