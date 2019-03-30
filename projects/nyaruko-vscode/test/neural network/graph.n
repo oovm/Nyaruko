@@ -1,0 +1,72 @@
+Import "NeuralNetwork" All
+%%%
+添加了 Graph(Template), Layer(Template)
+
+类 Initializer, Tensor 
+
+
+Convolution
+BatchNorm
+ReLU
+SeLU
+
+
+Template Graph 12() {
+    %%% doc
+    @param: 
+    @return: Class 12 Extends NeuralNetwork.Graph
+    %%%
+    12
+    Inputs {
+        Input::Tensor<[], Real32>
+    }
+    Outputs {
+        Output::Tensor<[], Real32>
+    }
+    Graph {
+        Input > Output
+    }
+}
+
+
+%%%
+
+Template Layer BatchNorm {
+    %%% doc
+    @param: 
+    @return: Class BatchNorm Extends NeuralNetwork.Layer
+    %%%
+    definition
+    Inputs {
+        Input::Tensor<[], Real32>
+    }
+    Outputs {
+        Output::Tensor<[], Real32>
+    }
+    Arrays {
+        Output::Initializer
+    }
+    Parameters {
+
+    }
+    Layer {
+        Input > Output
+    }
+    Writer {
+        'tvm': {
+
+        }
+        'onnx': {
+
+        }
+    }
+}
+
+
+
+External.Language.Python("${c}^2")
+
+
+square(c*::String):=External Language.Python {
+    c^2
+}

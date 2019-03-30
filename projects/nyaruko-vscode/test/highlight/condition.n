@@ -1,0 +1,62 @@
+%%% doc
+
+- Hotkey: `if s \Enter`
+
+%%%
+
+if (condition) {
+    true_then
+}
+
+%%% doc
+
+- Hotkey: `if l \Enter`
+
+%%%
+
+if (condition) {
+    true_then
+}
+else {
+    
+}
+
+
+%%% doc
+
+- Hotkey: `if o \Enter`
+
+%%%
+
+if (condition) {
+    true_then
+}
+else {
+    
+}
+otherwise {
+    
+}
+
+
+
+Template Graph Res_Block(c*) {
+    conv := Convolution(c,pad=Auto,stride=1)
+    bn := BatchNorm()
+    act := ReLU()
+
+    Inputs { 
+        Input::Tensor<[N,C,H,W],Real16>
+    }   
+    Outputs { 
+        Output::Tensor<[N,C,H,W],Real16>
+    } 
+
+    stage:= conv>bn>act
+
+    Graph {
+        ((Input > stage > stage) + Input) > Output
+    }
+}
+
+

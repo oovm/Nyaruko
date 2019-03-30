@@ -1,13 +1,16 @@
-%%%
+%%% doc
 ## 注释(Comment)
 
 - HotKey: cmt
 用 `%%%` 表示多行注释, 没有单行注释
+
+
 %%%
 
 
 
-%%%
+
+%%% module
 ### 导入模块
 - HotKey: ipma
 ```nyar
@@ -48,5 +51,4 @@ name(var) := {
 }
 ```
 %%%
-
 
