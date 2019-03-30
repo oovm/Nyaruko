@@ -1,2 +1,2 @@
 export * from './getSuggestions'
-export * from './wordContains'
+export * from './share'

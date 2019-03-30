@@ -1,23 +1,23 @@
-import { Base } from './share'
+import { AutoComplete } from '../utils'
 const Class_Declear = [
     {
-        'prefix': 'Class Define Statement',
+        'prefix': 'Class Declare Statement',
         'body': [
             'Class ${1:name} {',
             '\tself=${1:name}',
             '}'
         ],
-        'description': 'Class cs_name {}'
+        'description': 'Declare a Class'
     },
     {
-        'prefix': 'Class Extends Statement',
+        'prefix': 'Class Extend Statement',
         'body': [
             'Class ${1:name} Extend ${2:father} {',
             '\tself=${1:name}',
             '\tsuper=${2:father}',
             '}',
         ],
-        'description': 'Class cs_name {}'
+        'description': 'Extend a Class'
     },
     {
         'prefix': 'Class Mixin Statement',
@@ -28,7 +28,7 @@ const Class_Declear = [
             '\tmixin=${3:relative}',
             '}',
         ],
-        'description': 'Class cs_name {}'
+        'description': 'Mixin Classes'
     },
 ]
 
@@ -36,7 +36,7 @@ const Class_Property = [
     {
         'prefix': 'Property Getter',
         'body': [
-            'Getter (self*) {',
+            'Getter {',
             '\tget() := return(self)',
             '}'
         ],
@@ -45,7 +45,7 @@ const Class_Property = [
     {
         'prefix': 'Property Setter',
         'body': [
-            'Setter (self*) {',
+            'Setter {',
             '\tset() := $2;',
             '}'
         ],
@@ -54,7 +54,7 @@ const Class_Property = [
     {
         'prefix': 'Property Setter',
         'body': [
-            'Printer (self*) {',
+            'Overloader {',
             '\tset() := $2;',
             '}'
         ],
@@ -64,7 +64,7 @@ const Class_Property = [
 
 
 
-export default Base.concat(
+export default AutoComplete.concat(
     Class_Declear,
     Class_Property
 )

@@ -1,4 +1,4 @@
-const Conditions: any = []
+import { AutoComplete } from '../utils'
 
 const If_Condition = [
     {
@@ -54,7 +54,7 @@ const Switch_Condition = [
     }
 ]
 
-export default Conditions.concat(
+export default AutoComplete.concat(
     If_Condition,
     Switch_Condition
 )
