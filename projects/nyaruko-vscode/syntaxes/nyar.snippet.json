@@ -1,22 +1,22 @@
 {
-    "Class Define Statement": {
-        "prefix": "Class Define Statement",
+    "Class Declare Statement": {
+        "prefix": "Class Declare Statement",
         "body": [
             "Class ${1:name} {",
             "\tself=${1:name}",
             "}"
         ],
-        "description": "Class cs_name {}"
+        "description": "Declare a Class"
     },
-    "Class Extends Statement": {
-        "prefix": "Class Extends Statement",
+    "Class Extend Statement": {
+        "prefix": "Class Extend Statement",
         "body": [
             "Class ${1:name} Extend ${2:father} {",
             "\tself=${1:name}",
             "\tsuper=${2:father}",
             "}"
         ],
-        "description": "Class cs_name {}"
+        "description": "Extend a Class"
     },
     "Class Mixin Statement": {
         "prefix": "Class Mixin Statement",
@@ -27,7 +27,7 @@
             "\tmixin=${3:relative}",
             "}"
         ],
-        "description": "Class cs_name {}"
+        "description": "Mixin Classes"
     },
     "Comment": {
         "prefix": "Comment",
@@ -59,7 +59,7 @@
     "Function Statement": {
         "prefix": "Function Statement",
         "body": [
-            "${1:name}::AutoT => AutoT",
+            "${1:name}::Auto => Auto",
             "${1:name}(${2:var}) := {",
             "\t$0",
             "\treturn()",
@@ -70,7 +70,7 @@
     "If Statement": {
         "prefix": "If Statement",
         "body": [
-            "If (${1:condition}) {",
+            "if (${1:condition}) {",
             "\t${2:true_then}",
             "}"
         ],
@@ -79,10 +79,10 @@
     "If-Else Statement": {
         "prefix": "If-Else Statement",
         "body": [
-            "If (${1:condition}) {",
+            "if (${1:condition}) {",
             "\t${2:true_then}",
             "}",
-            "Else {",
+            "else {",
             "\tfalse_then",
             "}"
         ],
@@ -91,13 +91,13 @@
     "If-Else-Otherwise Statement": {
         "prefix": "If-Else-Otherwise Statement",
         "body": [
-            "If (${1:condition}) {",
+            "if (${1:condition}) {",
             "\t${2:true_then}",
             "}",
-            "Else {",
+            "else {",
             "\tfalse_then",
             "}",
-            "Otherwise {",
+            "otherwise {",
             "\tunknow_then",
             "}"
         ],
@@ -139,10 +139,32 @@
         ],
         "description": "Log to the console"
     },
+    "NeuralNetwork Graph Template": {
+        "prefix": "NeuralNetwork Graph Template",
+        "body": [
+            "Template Graph ${1:name}() {",
+            "\t%%% doc",
+            "\t@param: ",
+            "\t@return: Class ${1:name} Extends NeuralNetwork.Graph",
+            "\t%%%",
+            "\t${0:defitions}",
+            "\tInputs {",
+            "\t\tInput::Tensor<[], Real32>",
+            "\t}",
+            "\tOutputs {",
+            "\t\tOutput::Tensor<[], Real32>",
+            "\t}",
+            "\tGraph {",
+            "\t\tInput > Output",
+            "\t}",
+            "}"
+        ],
+        "description": "Template tp_name sym_name {}"
+    },
     "Property Getter": {
         "prefix": "Property Getter",
         "body": [
-            "Getter (self*) {",
+            "Getter {",
             "\tget() := return(self)",
             "}"
         ],
@@ -151,7 +173,7 @@
     "Property Setter": {
         "prefix": "Property Setter",
         "body": [
-            "Printer (self*) {",
+            "Overloader {",
             "\tset() := $2;",
             "}"
         ],
@@ -160,7 +182,7 @@
     "Switch Statement": {
         "prefix": "Switch Statement",
         "body": [
-            "Switch (${1:expr}) {",
+            "switch (${1:expr}) {",
             "\t${2:case1},",
             "\tdo something",
             "\t*,",
@@ -168,15 +190,6 @@
             "}"
         ],
         "description": "Switch Statement"
-    },
-    "Template Reference": {
-        "prefix": "Template Reference",
-        "body": [
-            "Template ${1:name} ${2:symbol} {",
-            "\t$3",
-            "}"
-        ],
-        "description": "Template tp_name sym_name {}"
     },
     "Throw Exception": {
         "prefix": "Throw Exception",

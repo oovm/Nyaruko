@@ -1,3 +1,4 @@
+import { Syntax } from '@nyar/tmlang'
 import * as Modules from '../extension/snippet/module'
 import * as Templates from '../extension/snippet/template'
 import * as Classes from '../extension/snippet/class'
@@ -29,4 +30,9 @@ for (let i = 0; i < Snippets.length; i++) {
 writeFileSync(
     __dirname + '/nyar.snippet.json',
     JSON.stringify(snippet, null, 4)
+)
+
+writeFileSync(
+    __dirname + '/nyar.tmLanguage.json',
+    JSON.stringify(Syntax, null, 4)
 )

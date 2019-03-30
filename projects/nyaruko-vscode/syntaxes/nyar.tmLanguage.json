@@ -1,51 +1,79 @@
 {
     "scopeName": "source.nyar",
-    "information_for_contributors": [],
     "version": "v0.0.0",
+    "uuid": "",
+    "information_for_contributors": [],
     "patterns": [
         {
-            "begin": "(^[ \\t]+)?(?=%)",
+            "name": "comment.document.nyar",
+            "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?i:(doc)(\\s+[^%]*)?$)",
+            "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
             "beginCaptures": {
-                "1": {
-                    "name": "punctuation.comment.leading.nyar"
+                "3": {
+                    "name": "punctuation.definition.comment"
+                },
+                "4": {
+                    "name": "punctuation.block.language"
+                },
+                "5": {
+                    "name": "comment.document.attributes.nyar"
+                },
+                "6": {
+                    "name": "comment.document.attributes.nyar"
                 }
             },
-            "end": "(?!\\G)",
+            "endCaptures": {
+                "3": {
+                    "name": "punctuation.definition.comment"
+                }
+            },
             "patterns": [
                 {
-                    "begin": "%",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.nyar"
+                    "begin": "(^|\\G)(\\s*)(.*)",
+                    "while": "(^|\\G)(?!\\s*([%]{3,})\\s*$)",
+                    "contentName": "meta.embedded.document.markdown",
+                    "patterns": [
+                        {
+                            "include": "text.html.markdown"
                         }
-                    },
-                    "end": "\\n",
-                    "name": "comment.line.number-sign.nyar"
+                    ]
                 }
             ]
         },
         {
-            "begin": "(^[ \\t]+)?(?=%)",
+            "name": "comment.nyar",
+            "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)",
+            "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
             "beginCaptures": {
-                "1": {
-                    "name": "punctuation.comment.leading.nyar"
+                "3": {
+                    "name": "punctuation.definition.comment"
+                },
+                "4": {
+                    "name": "punctuation.definition.comment"
                 }
             },
-            "end": "(?!\\G)",
+            "endCaptures": {
+                "3": {
+                    "name": "punctuation.definition.comment"
+                }
+            },
             "patterns": [
                 {
-                    "begin": "%",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.nyar"
-                        }
-                    },
-                    "end": "\\n",
-                    "name": "comment.line.number-sign.nyar"
+                    "include": "text.html.markdown"
                 }
             ]
+        },
+        {
+            "name": "constant.language.nyar",
+            "match": "\\b(True|False|Null)\\b"
+        },
+        {
+            "name": "keyword.control.nyar",
+            "match": "\\b(If|Else|Otherwise|Switch|For|In|Do|While|With)\\b"
+        },
+        {
+            "name": "storage.modifier.nyar",
+            "match": "\\b(Template|Class|Using|Exposing|As|Instance)\\b"
         }
-      
-
     ]
 }
