@@ -51,8 +51,8 @@ Macro Symbol Pattern := Scope {
         f(a*::Number, b*::Number) => Number := a + b 
     ==> complex macro expand 
     ==> Definition(
-            Typed(f, Transformed(Tuple(Type(Number), Type(Number)), Type(Number))),
-            SetDelayed(f(Pattern(a,Blank()),Pattern(b,Blank())),Plus(a,b))
+            Typed(f, Transformed(Tuple(Type(Number), Type(Number)), Type(Number))), 
+            SetDelayed(f(Pattern(a, Blank()), Pattern(b, Blank())), Plus(a, b))
         )
     %%%
 }
@@ -125,7 +125,20 @@ Class A Extents B {
 
 ## Module
 
-`Using` 和 `Exposing` 用于管理模块, `As` 用于指定 `Alias`
+ `Using` 和 `Exposing` 用于管理模块, `As` 用于指定 `Alias` 
+
+## Literal
+
+字面量
+
+`k = 2 s` Let {k} {2 s}
+
+`k =< 2 s`
+Constant {k} {2 s}
+
+`f(a, b) := a+b`
+
+Function f {(a, b)} {return(a+b)}
 
 ## Comment
 
@@ -157,9 +170,10 @@ S=Keyword.Statement, P=Keyword.Scope
 
 S=Keyword.Statement, P=Keyword.Scope
 
-
 <p hidden>
+
 - 算符宏(Operate) 算符宏给出其 Lisp 表达式
+
   - Type S P 
   - **(s::t)>>(:: s t)**
   - Type S P={S To S} 
