@@ -1,8 +1,15 @@
+//FIXME: 正则转义
 export const BasicOperators = {
-    'match': [
+    name: 'keyword.operator.basic.nyar',
+    match: '\\b(' + [
         '+', '-', '*', '/'
-    ].join('|'),
-    'name': 'keyword.operator.basic.nyar'
+    ].join('|') + ')\\b',
+
 }
 
-
+export const AssignOperators = {
+    name: 'keyword.operator.assign.nyar',
+    match: '\\b(' + [
+        '=', '+=', '-='
+    ].join('|') + ')\\b',
+}

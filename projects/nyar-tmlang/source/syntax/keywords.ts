@@ -1,29 +1,28 @@
 export const Modifiers = {
-    'name': 'storage.modifier.nyar',
-    'match': '\\b(' + [
-        'Template|Class',
-        'Using|Exposing|As|Instance',
+    name: 'storage.modifier.nyar',
+    match: '\\b(' + [
+        'template|class',
+        'new|using|expose|as|instance',
     ].join('|') + ')\\b',
 }
 
 
 export const Controlors = {
-    'name': 'keyword.control.nyar',
-    'match': '\\b(' + [
-        'If|Else|Otherwise',
-        'Switch',
-        'For|In',
-        'Do|While',
-        'With',
+    name: 'keyword.control.nyar',
+    match: '\\b(' + [
+        'if|else',
+        'switch',
+        'for|in',
+        'do|while',
+        'with',
     ].join('|') + ')\\b',
 
 }
 
 
 export const Constants = {
-    'name': 'constant.language.nyar',
-    'match': '\\b(' + [
-        'True|False|Null'
+    name: 'constant.language.nyar',
+    match: '\\b(' + [
+        'true|false|null'
     ].join('|') + ')\\b',
 }
-
