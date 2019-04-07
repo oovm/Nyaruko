@@ -1,6 +1,6 @@
 {
     "scopeName": "source.nyar",
-    "version": "v0.0.0",
+    "version": "v0.0.1",
     "uuid": "",
     "information_for_contributors": [],
     "patterns": [
@@ -65,15 +65,15 @@
         },
         {
             "name": "constant.language.nyar",
-            "match": "\\b(True|False|Null)\\b"
+            "match": "\\b(true|false|null)\\b"
         },
         {
             "name": "keyword.control.nyar",
-            "match": "\\b(If|Else|Otherwise|Switch|For|In|Do|While|With)\\b"
+            "match": "\\b(if|else|switch|for|in|do|while|with)\\b"
         },
         {
             "name": "storage.modifier.nyar",
-            "match": "\\b(Template|Class|Using|Exposing|As|Instance)\\b"
+            "match": "\\b(template|class|new|using|expose|as|instance)\\b"
         }
     ]
 }

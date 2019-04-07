@@ -9,7 +9,7 @@ export function getSuggestions(
     return new Promise(function (resolve, reject) {
         cmdlist.then(function (stdout: string) {
             // match suitable commands 
-            let commands = stdout.split('\n').filter(function (cmd) { return matchPredicate(cmd, currentWord) })
+            let commands = stdout.split('\n').filter((cmd) => { return matchPredicate(cmd, currentWord) })
             if (commands.length > 0) {
                 // make suggestions from commands
                 let suggestions = commands.map(function (command_name) {
@@ -25,11 +25,12 @@ export function getSuggestions(
                     return item
                 })
                 resolve(suggestions)
-            } else {
+            }
+            else {
                 resolve([])
             }
-        }).catch(function (err: any) {
-            reject(err)
-        })
+        }).catch(
+            (err: any) => { reject(err) }
+        )
     })
 }

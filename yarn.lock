@@ -7022,7 +7022,7 @@ vscode-test@^0.1.4:
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.1"
 
-vscode@^1.1.30:
+vscode@^1.1.30, vscode@^1.1.33:
   version "1.1.33"
   resolved "http://registry.npm.taobao.org/vscode/download/vscode-1.1.33.tgz#e05d5ca25eb35d799fc20622af7c7a561abf6fba"
   integrity sha1-4F1col6zXXmfwgYir3x6Vhq/b7o=

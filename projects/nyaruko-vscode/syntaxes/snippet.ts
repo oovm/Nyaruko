@@ -18,9 +18,7 @@ const Snippets = Modules.default
         Loops.default,
         Comments.default
     )
-    .sort(
-        (a, b) => { return ('' + a.prefix).localeCompare(b.prefix) }
-    )
+    .sort((a, b) => { return ('' + a.prefix).localeCompare(b.prefix) } )
 
 let snippet: any = {}
 for (let i = 0; i < Snippets.length; i++) {
