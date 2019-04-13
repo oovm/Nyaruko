@@ -19,6 +19,7 @@ const operators_raw = {
         '.=',
     ],
     lazy_assign: [':='],
+    type_assign: ['::'],
 }
 
 export const operators = Object.entries(operators_raw)

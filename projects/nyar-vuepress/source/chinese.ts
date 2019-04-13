@@ -28,7 +28,15 @@ function SyntaxPages() {
             Syntax('Template'),
         ]
     }
-    return [overview, basic, advance]
+    const special = {
+        title: 'Special',
+        collapsable: true,
+        children: [
+            Syntax('Assign'),
+            Syntax('LazyAssign'),
+        ]
+    }
+    return [overview, basic, advance,special]
 }
 
 const ChinesePage = {

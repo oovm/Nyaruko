@@ -5,6 +5,9 @@
 ```ts
 Class A_Long_Name {
     this = A_Long_Name
+    __init__(name){
+        this.name=name
+    }
 }
 ```
 

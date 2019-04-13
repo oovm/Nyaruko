@@ -12,6 +12,10 @@ export const Operators = [
     {
         name: 'keyword.operator.assignment.lazy.nyar',
         match: '(?x)(' + operators.lazy_assign.join('|') + ')',
+    },
+    {
+        name: 'keyword.operator.assignment.type.nyar',
+        match: '(?x)(' + operators.type_assign.join('|') + ')',
     }
 ]
 
