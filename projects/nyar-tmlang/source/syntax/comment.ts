@@ -4,15 +4,15 @@ export const Comments = [
         begin: '(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)',
         end: '(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$',
         beginCaptures: {
-            '3': {
+            3: {
                 name: 'punctuation.definition.comment'
             },
-            '4': {
+            4: {
                 name: 'punctuation.definition.comment'
             }
         },
         endCaptures: {
-            '3': {
+            3: {
                 name: 'punctuation.definition.comment'
             }
         },
