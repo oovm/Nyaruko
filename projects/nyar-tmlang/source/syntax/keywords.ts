@@ -1,28 +1,18 @@
+import { keywords } from '../tokens'
 export const Modifiers = {
     name: 'storage.modifier.nyar',
-    match: '\\b(' + [
-        'template|class',
-        'new|using|expose|as|instance',
-    ].join('|') + ')\\b',
+    match: '\\b(' + keywords.modifier.join('|') + ')\\b',
 }
-
 
 export const Controlors = {
     name: 'keyword.control.nyar',
-    match: '\\b(' + [
-        'if|else',
-        'switch',
-        'for|in',
-        'do|while',
-        'with',
-    ].join('|') + ')\\b',
-
+    match: '\\b(' + keywords.controllor.join('|') + ')\\b',
 }
 
-
+const constants = keywords.bool
+    .concat(keywords.null)
+    .join('|')
 export const Constants = {
     name: 'constant.language.nyar',
-    match: '\\b(' + [
-        'true|false|null'
-    ].join('|') + ')\\b',
+    match: '\\b(' + constants + ')\\b',
 }

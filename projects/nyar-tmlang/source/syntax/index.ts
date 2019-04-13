@@ -1,6 +1,6 @@
 import { Comments } from './comment'
-import { Constants, Controlors, Modifiers } from './keywords'
-import { AssignOperators, BasicOperators } from './operator'
+import { Constants, Controlors, Modifiers } from './keyword'
+import { Operators } from './operator'
 
 interface patterns {
     name: string
@@ -18,6 +18,7 @@ export const Syntax = {
     information_for_contributors: [],
     patterns: cases
         .concat([Constants, Controlors, Modifiers])
-        //.concat([AssignOperators, BasicOperators])
+        .concat(Operators)
         .sort((a, b) => { return ('' + a.name).localeCompare(b.name) })
 }
+console.log(Syntax)
