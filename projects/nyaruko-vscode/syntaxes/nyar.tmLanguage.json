@@ -72,8 +72,20 @@
             "match": "\\b(if|else|switch|for|in|do|while|with)\\b"
         },
         {
+            "name": "keyword.operator.arithmetic.nyar",
+            "match": "(?x)(\\+|-|\\*|/|\\^|@)"
+        },
+        {
+            "name": "keyword.operator.assignment.lazy.nyar",
+            "match": "(?x)(:=)"
+        },
+        {
+            "name": "keyword.operator.assignment.nyar",
+            "match": "(?x)(=|.=)"
+        },
+        {
             "name": "storage.modifier.nyar",
-            "match": "\\b(template|class|new|using|expose|as|instance)\\b"
+            "match": "\\b(template|class|new|instance)\\b"
         }
     ]
 }

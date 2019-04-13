@@ -1,15 +1,18 @@
-//FIXME: 正则转义
-export const BasicOperators = {
-    name: 'keyword.operator.basic.nyar',
-    match: '\\b(' + [
-        '+', '-', '*', '/'
-    ].join('|') + ')\\b',
+import { operators } from '../tokens'
+export const Operators = [
+    {
+        name: 'keyword.operator.arithmetic.nyar',
+        match: '(?x)(' + operators.basic.join('|') + ')',
 
-}
+    },
+    {
+        name: 'keyword.operator.assignment.nyar',
+        match: '(?x)(' + operators.assign.join('|') + ')',
+    },
+    {
+        name: 'keyword.operator.assignment.lazy.nyar',
+        match: '(?x)(' + operators.lazy_assign.join('|') + ')',
+    }
+]
 
-export const AssignOperators = {
-    name: 'keyword.operator.assign.nyar',
-    match: '\\b(' + [
-        '=', '+=', '-='
-    ].join('|') + ')\\b',
-}
+//keyword.operator.comparison
