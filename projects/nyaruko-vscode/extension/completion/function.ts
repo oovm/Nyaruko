@@ -3,7 +3,7 @@ import { getSuggestions, wordContains } from '../utils'
 import { Agent } from 'https'
 const show = vscode.CompletionItemKind.Function
 function formatter(func: string) {
-    return func + '(${1})'
+    return func + '($0)'
 }
 const math_basic = [
     'add|minus|times|divide|mod',

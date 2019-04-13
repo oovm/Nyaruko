@@ -4,7 +4,7 @@ const Module_Include = [
     {
         'prefix': 'Using Include Statement',
         'body': [
-            'Using "${1:def}" Instance'
+            'using "${1:def}" instance'
         ],
         'description': 'Using Definition Instance'
     }
@@ -14,21 +14,21 @@ const Module_Import = [
     {
         'prefix': 'Using Module Alias',
         'body': [
-            'Using "${1:module}" As { $2 }'
+            'using "${1:module}" as { $2 }'
         ],
-        'description': 'Using module As alias'
+        'description': 'Using module as alias'
     },
     {
         'prefix': 'Using Symbol Alias',
         'body': [
-            'Using "${1:module}" With { $2 }'
+            'using "${1:module}" with { $2 }'
         ],
         'description': 'Using some symbols from a module'
     },
     {
         'prefix': 'Using Module All',
         'body': [
-            'Using "${1:module}" All'
+            'using "${1:module}" *'
         ],
         'description': 'Using some namespace'
     },
@@ -38,16 +38,16 @@ const Module_Export = [
     {
         'prefix': 'Exposing Module Symbol',
         'body': [
-            'Exposing "{${0:symbol}}"'
+            'expose "{${0:symbol}}"'
         ],
-        'description': 'Using module As alias'
+        'description': ''
     },
     {
         'prefix': 'Exposing Module Symbol',
         'body': [
-            'Import "${1:module}" Of { $2 }'
+            'expose "${1:module}" of { $2 }'
         ],
-        'description': 'Import (module1, module2) Of { symbol As alias }'
+        'description': ''
     }
 ]
 

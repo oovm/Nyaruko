@@ -2,7 +2,9 @@
     "scopeName": "source.nyar",
     "version": "v0.0.1",
     "uuid": "",
-    "information_for_contributors": [],
+    "information_for_contributors": [
+        "aster: galaster@foxmail.com"
+    ],
     "patterns": [
         {
             "name": "comment.document.nyar",
@@ -68,6 +70,10 @@
             "match": "\\b(true|false|null)\\b"
         },
         {
+            "name": "keyword.control.module.nyar",
+            "match": "\\b(using|as|expose)\\b"
+        },
+        {
             "name": "keyword.control.nyar",
             "match": "\\b(if|else|switch|for|in|do|while|with)\\b"
         },
@@ -82,6 +88,10 @@
         {
             "name": "keyword.operator.assignment.nyar",
             "match": "(?x)(=|.=)"
+        },
+        {
+            "name": "keyword.operator.assignment.type.nyar",
+            "match": "(?x)(::)"
         },
         {
             "name": "storage.modifier.nyar",

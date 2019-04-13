@@ -36,7 +36,7 @@ const Class_Property = [
     {
         'prefix': 'Property Getter',
         'body': [
-            'Getter {',
+            'getter {',
             '\tget() := return(self)',
             '}'
         ],
@@ -45,7 +45,7 @@ const Class_Property = [
     {
         'prefix': 'Property Setter',
         'body': [
-            'Setter {',
+            'setter {',
             '\tset() := $2;',
             '}'
         ],
@@ -54,7 +54,7 @@ const Class_Property = [
     {
         'prefix': 'Property Setter',
         'body': [
-            'Overloader {',
+            'overloader {',
             '\tset() := $2;',
             '}'
         ],
