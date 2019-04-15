@@ -3,14 +3,16 @@ const keywords_raw = {
         'using|as|expose'
     ],
     modifier: [
-        'template|class',
-        'new|instance',
+        'class|extend|implicate',
+        'structure|interface|new|instance',
+        'template',
+        'macro'
     ],
     controllor: [
         'if|else',
-        'switch',
+        'switch|case',
         'for|in',
-        'do|while',
+        'while',
         'with',
     ],
     null: ['null'],

@@ -8,8 +8,13 @@ const functions_raw = {
         'abs|arg|real|imaginary|conjugate',
         'lcm|gcd|gcd_extand,'
     ],
-    math_advance: [
-        'solve|integrate|tr'
+    math_symbolic: [
+        'integrate|integrateAsymptotic',
+        'sum|sumAsymptotic',
+        'solveAlgebra|solveDifferential|solveRecursive'
+    ],
+    math_linear: [
+        'tr'
     ],
     loop_basic: [
         'range',
@@ -18,14 +23,8 @@ const functions_raw = {
     io_basic: [
         'print',
         'import', 'export',
-        'import_string', 'export_string',
-        'import_bype', 'export_byte'
-    ],
-    class_basic: [
-        'print',
-        'import', 'export',
-        'import_string', 'export_string',
-        'import_bype', 'export_byte'
+        'import_string', 'exportString',
+        'importBype', 'exportByte'
     ]
 }
 
