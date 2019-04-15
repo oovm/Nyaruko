@@ -47,6 +47,25 @@
         ],
         "description": "Do-While Statement"
     },
+    "Else-If Statement": {
+        "prefix": "Else-If Statement",
+        "body": [
+            "else if (${1:condition}) {",
+            "\t${2:true_then}",
+            "}",
+            "else {",
+            "\tfalse_then",
+            "}"
+        ],
+        "description": "If Condition\tTrue/False/Unknow"
+    },
+    "Exposing Module Symbol": {
+        "prefix": "Exposing Module Symbol",
+        "body": [
+            "expose \"${1:module}\" of { $2 }"
+        ],
+        "description": ""
+    },
     "For Range Loop": {
         "prefix": "For Range Loop",
         "body": [
@@ -88,49 +107,6 @@
         ],
         "description": "If-Else Statement"
     },
-    "If-Else-Otherwise Statement": {
-        "prefix": "If-Else-Otherwise Statement",
-        "body": [
-            "if (${1:condition}) {",
-            "\t${2:true_then}",
-            "}",
-            "else {",
-            "\tfalse_then",
-            "}",
-            "otherwise {",
-            "\tunknow_then",
-            "}"
-        ],
-        "description": "If Condition\tTrue/False/Unknow"
-    },
-    "Import Module Alias": {
-        "prefix": "Import Module Alias",
-        "body": [
-            "Import \"${1:module}\" As { $2 }"
-        ],
-        "description": "Import module As alias"
-    },
-    "Import Symbol Alias": {
-        "prefix": "Import Symbol Alias",
-        "body": [
-            "Import \"${1:module}\" Of { $2 }"
-        ],
-        "description": "Import (module1, module2) Of { symbol As alias }"
-    },
-    "Import Symbol All": {
-        "prefix": "Import Symbol All",
-        "body": [
-            "Import \"${1:module}\" All"
-        ],
-        "description": "Import all symbol in module1"
-    },
-    "Include Statement": {
-        "prefix": "Include Statement",
-        "body": [
-            "Import \"${1:def}\" Instance"
-        ],
-        "description": "Import Definition Instance"
-    },
     "Log to the console": {
         "prefix": "Log to the console",
         "body": [
@@ -161,10 +137,32 @@
         ],
         "description": "Template tp_name sym_name {}"
     },
+    "NeuralNetwork Layer Template": {
+        "prefix": "NeuralNetwork Layer Template",
+        "body": [
+            "Template Layer ${1:name}() {",
+            "\t%%% doc",
+            "\t@param: ",
+            "\t@return: Class ${1:name} Extends NeuralNetwork.Layer",
+            "\t%%%",
+            "\t${0:defitions}",
+            "\tInputs {",
+            "\t\tInput::Tensor<[], Real32>",
+            "\t}",
+            "\tOutputs {",
+            "\t\tOutput::Tensor<[], Real32>",
+            "\t}",
+            "\tLayer {",
+            "\t\tInput > Output",
+            "\t}",
+            "}"
+        ],
+        "description": "Template tp_name sym_name {}"
+    },
     "Property Getter": {
         "prefix": "Property Getter",
         "body": [
-            "Getter {",
+            "getter {",
             "\tget() := return(self)",
             "}"
         ],
@@ -173,7 +171,7 @@
     "Property Setter": {
         "prefix": "Property Setter",
         "body": [
-            "Overloader {",
+            "overloader {",
             "\tset() := $2;",
             "}"
         ],
@@ -210,6 +208,34 @@
             "}"
         ],
         "description": "Try-Catch Statement"
+    },
+    "Using Include Statement": {
+        "prefix": "Using Include Statement",
+        "body": [
+            "using \"${1:def}\" instance"
+        ],
+        "description": "Using Definition Instance"
+    },
+    "Using Module Alias": {
+        "prefix": "Using Module Alias",
+        "body": [
+            "using \"${1:module}\" as { $2 }"
+        ],
+        "description": "Using module as alias"
+    },
+    "Using Module All": {
+        "prefix": "Using Module All",
+        "body": [
+            "using \"${1:module}\" *"
+        ],
+        "description": "Using some namespace"
+    },
+    "Using Symbol Alias": {
+        "prefix": "Using Symbol Alias",
+        "body": [
+            "using \"${1:module}\" with { $2 }"
+        ],
+        "description": "Using some symbols from a module"
     },
     "With Statement": {
         "prefix": "With Statement",

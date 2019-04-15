@@ -7,6 +7,29 @@
     ],
     "patterns": [
         {
+            "name": "comment.block.nyar",
+            "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)",
+            "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
+            "beginCaptures": {
+                "3": {
+                    "name": "punctuation.definition.comment"
+                },
+                "4": {
+                    "name": "punctuation.definition.comment"
+                }
+            },
+            "endCaptures": {
+                "3": {
+                    "name": "punctuation.definition.comment"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "text.html.markdown"
+                }
+            ]
+        },
+        {
             "name": "comment.document.nyar",
             "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?i:(doc)(\\s+[^%]*)?$)",
             "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
@@ -43,20 +66,12 @@
             ]
         },
         {
-            "name": "comment.nyar",
-            "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)",
-            "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
+            "name": "comment.line.nyar",
+            "begin": "#!",
+            "end": "^",
             "beginCaptures": {
-                "3": {
-                    "name": "punctuation.definition.comment"
-                },
-                "4": {
-                    "name": "punctuation.definition.comment"
-                }
-            },
-            "endCaptures": {
-                "3": {
-                    "name": "punctuation.definition.comment"
+                "0": {
+                    "name": "punctuation.definition.comment.nyar"
                 }
             },
             "patterns": [
@@ -64,6 +79,15 @@
                     "include": "text.html.markdown"
                 }
             ]
+        },
+        {
+            "name": "comment.line.shebang.ts",
+            "match": "\\A(#!).*(?=$)",
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.comment.nyar"
+                }
+            }
         },
         {
             "name": "constant.language.nyar",
@@ -99,7 +123,7 @@
         },
         {
             "name": "keyword.control.nyar",
-            "match": "\\b(if|else|switch|for|in|do|while|with)\\b"
+            "match": "\\b(if|else|switch|case|for|in|while|with)\\b"
         },
         {
             "name": "keyword.operator.arithmetic.nyar",
@@ -111,15 +135,19 @@
         },
         {
             "name": "keyword.operator.assignment.nyar",
-            "match": "(?x)(=|.=)"
+            "match": "(?x)(=|\\.=)"
         },
         {
             "name": "keyword.operator.assignment.type.nyar",
             "match": "(?x)(::)"
         },
         {
+            "name": "keyword.operator.comparison.nyar",
+            "match": "(?x)(<|<=|>|>=)"
+        },
+        {
             "name": "storage.modifier.nyar",
-            "match": "\\b(template|class|new|instance)\\b"
+            "match": "\\b(class|extend|implicate|new|instance|template|macro)\\b"
         },
         {
             "begin": "\\$?\"",
@@ -195,6 +223,10 @@
                 }
             },
             "name": "string.quoted.single.nyar"
+        },
+        {
+            "name": "variable.other.readwrite.nyar",
+            "match": "[a-zA-Z*]"
         }
     ]
 }
