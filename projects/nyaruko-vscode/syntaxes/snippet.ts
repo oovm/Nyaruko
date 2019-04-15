@@ -9,7 +9,6 @@ import * as Comments from '../extension/snippet/comment'
 
 import { writeFileSync } from 'fs'
 
-/*
 const Snippets = Modules.default
     .concat(
         Templates.default,
@@ -30,7 +29,6 @@ writeFileSync(
     __dirname + '/nyar.snippet.json',
     JSON.stringify(snippet, null, 4)
 )
-*/
 
 writeFileSync(
     __dirname + '/nyar.tmLanguage.json',
