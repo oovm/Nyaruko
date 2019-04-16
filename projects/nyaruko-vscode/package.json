@@ -17,9 +17,6 @@
         "watch": "tsc -watch -p ./",
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
-    "dependencies": {
-        "@nyar/tmlang": "^0.1.3"
-    },
     "contributes": {
         "iconThemes": [
             {
@@ -33,6 +30,9 @@
                 "id": "nyar",
                 "aliases": [
                     "Nyar"
+                ],
+                "filenames": [
+                    "__index__"
                 ],
                 "extensions": [
                     ".n",

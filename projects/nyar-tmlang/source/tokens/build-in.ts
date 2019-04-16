@@ -12,6 +12,12 @@ const build_in_raw = {
     ],
     operator_name: [
         'add|append'
+    ],
+    magic_variable: [
+        'hash'
+    ],
+    magic_function: [
+        'create|delete'
     ]
 }
 

@@ -4,7 +4,7 @@ const For_Loop = [
     {
         'prefix': 'For Range Loop',
         'body': [
-            'For $1 In range($2) {',
+            'for $1 in range($2) {',
             '\t$0',
             '}'
         ],
@@ -30,7 +30,7 @@ const With_Loop = [
     {
         'prefix': 'With Statement',
         'body': [
-            'With ${1:symbol} As ${2:alias} {',
+            'with ${1:symbol} as ${2:alias} {',
             '\t$0',
             '}'
         ],

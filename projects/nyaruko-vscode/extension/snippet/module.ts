@@ -54,6 +54,5 @@ const Module_Export = [
 
 export default AutoComplete.concat(
     Module_Include,
-    Module_Import,
-    Module_Export
+    Module_Import
 )

@@ -3,7 +3,7 @@ const Class_Declear = [
     {
         'prefix': 'Class Declare Statement',
         'body': [
-            'Class ${1:name} {',
+            'class ${1:name} {',
             '\tself=${1:name}',
             '}'
         ],
@@ -12,7 +12,7 @@ const Class_Declear = [
     {
         'prefix': 'Class Extend Statement',
         'body': [
-            'Class ${1:name} Extend ${2:father} {',
+            'class ${1:name} extend ${2:father} {',
             '\tself=${1:name}',
             '\tsuper=${2:father}',
             '}',
@@ -22,7 +22,7 @@ const Class_Declear = [
     {
         'prefix': 'Class Mixin Statement',
         'body': [
-            'Class ${1:name} Mixin ${2:father} ${3:relative} {',
+            'class ${1:name} mixin ${2:father} ${3:relative} {',
             '\tself=${1:name}',
             '\tsuper=${2:father}',
             '\tmixin=${3:relative}',

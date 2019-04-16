@@ -95,7 +95,7 @@
         },
         {
             "name": "constant.numeric.float.nyar",
-            "match": "(?x)\n  (?<! \\w)(?:\n    (?:\n      \\.[0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\. [0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\.\n    ) (?: [eE][+-]?[0-9](?: _?[0-9] )* )?\n    |\n    [0-9](?: _?[0-9] )* (?: [eE][+-]?[0-9](?: _?[0-9] )* )\n  )([jJ])?\\b\n",
+            "match": "(?x)(?<!\\w)(?:(?:\\.[0-9](?:_?[0-9])*|[0-9](?:_?[0-9])*\\.[0-9](?:_?[0-9])*|[0-9](?:_?[0-9])*\\.)(?:[eE][+-]?[0-9](?:_?[0-9])*)?|[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*))([jJ])?\\b",
             "captures": {
                 "1": {
                     "name": "storage.type.imaginary.number.nyar"
@@ -104,7 +104,7 @@
         },
         {
             "name": "constant.numeric.integer.nyar",
-            "match": "(?x)\n  (?<![\\w\\.])(?:\n      [1-9](?: _?[0-9] )*\n      |\n      0+\n      |\n      [0-9](?: _?[0-9] )* ([jJ])\n      |\n      0 ([0-9]+)(?![eE\\.])\n  )\\b\n",
+            "match": "(?x)(?<![\\w\\.])(?:[1-9](?:_?[0-9])*|0+|[0-9](?:_?[0-9])*([jJ])|0([0-9]+)(?![eE\\.]))\\b",
             "captures": {
                 "1": {
                     "name": "storage.type.imaginary.number.nyar"
@@ -123,11 +123,11 @@
         },
         {
             "name": "keyword.control.nyar",
-            "match": "\\b(if|else|switch|case|for|in|while|with)\\b"
+            "match": "\\b(if|else|elif|switch|case|for|in|while|do|when|with)\\b"
         },
         {
             "name": "keyword.operator.arithmetic.nyar",
-            "match": "(?x)(\\+|-|\\*|/|\\^|@)"
+            "match": "(?x)(\\+|-|\\*|×|/|÷|\\^|√|@|:|\\$)"
         },
         {
             "name": "keyword.operator.assignment.lazy.nyar",
@@ -143,11 +143,11 @@
         },
         {
             "name": "keyword.operator.comparison.nyar",
-            "match": "(?x)(<|<=|>|>=)"
+            "match": "(?x)(<|<=|>|>=|===|=!=)"
         },
         {
             "name": "storage.modifier.nyar",
-            "match": "\\b(class|extend|implicate|new|instance|template|macro)\\b"
+            "match": "\\b(class|extend|implicate|structure|interface|new|instance|public|private|protect|define|function|template|macro)\\b"
         },
         {
             "begin": "\\$?\"",
@@ -165,7 +165,7 @@
             "name": "string.quoted.double.nyar",
             "patterns": [
                 {
-                    "match": "\\\\[\\$`\"\\\\\\n]",
+                    "match": "\\\\[\\$`\"\\\\]",
                     "name": "constant.character.escape.nyar"
                 },
                 {
@@ -223,6 +223,24 @@
                 }
             },
             "name": "string.quoted.single.nyar"
+        },
+        {
+            "name": "support.function.magic.nyar",
+            "match": "(?x)\\b(__(?:create|delete)__)\\b",
+            "captures": {
+                "1": {
+                    "name": "support.function.magic.nyar"
+                }
+            }
+        },
+        {
+            "name": "support.variable.magic.nyar",
+            "match": "(?x)\b(__(?:abs|add|hash)__)\\b",
+            "captures": {
+                "1": {
+                    "name": "support.variable.magic.nyar"
+                }
+            }
         },
         {
             "name": "variable.other.readwrite.nyar",

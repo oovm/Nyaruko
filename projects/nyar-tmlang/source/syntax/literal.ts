@@ -30,7 +30,7 @@ export const StringLiteral = [
         name: 'string.quoted.double.nyar',
         patterns: [
             {
-                match: '\\\\[\\$`"\\\\\\n]',
+                match: '\\\\[\\$`"\\\\\]',
                 name: 'constant.character.escape.nyar'
             },
             {
@@ -80,7 +80,7 @@ export const StringLiteral = [
 export const NumberLiteral = [
     {
         name: 'constant.numeric.float.nyar',
-        match: '(?x)\n  (?<! \\w)(?:\n    (?:\n      \\.[0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\. [0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\.\n    ) (?: [eE][+-]?[0-9](?: _?[0-9] )* )?\n    |\n    [0-9](?: _?[0-9] )* (?: [eE][+-]?[0-9](?: _?[0-9] )* )\n  )([jJ])?\\b\n',
+        match: '(?x)(?<!\\w)(?:(?:\\.[0-9](?:_?[0-9])*|[0-9](?:_?[0-9])*\\.[0-9](?:_?[0-9])*|[0-9](?:_?[0-9])*\\.)(?:[eE][+-]?[0-9](?:_?[0-9])*)?|[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*))([jJ])?\\b',
         captures: {
             1: {
                 name: 'storage.type.imaginary.number.nyar'
@@ -89,7 +89,7 @@ export const NumberLiteral = [
     },
     {
         name: 'constant.numeric.integer.nyar',
-        match: '(?x)\n  (?<![\\w\\.])(?:\n      [1-9](?: _?[0-9] )*\n      |\n      0+\n      |\n      [0-9](?: _?[0-9] )* ([jJ])\n      |\n      0 ([0-9]+)(?![eE\\.])\n  )\\b\n',
+        match: '(?x)(?<![\\w\\.])(?:[1-9](?:_?[0-9])*|0+|[0-9](?:_?[0-9])*([jJ])|0([0-9]+)(?![eE\\.]))\\b',
         captures: {
             1: {
                 'name': 'storage.type.imaginary.number.nyar'
@@ -102,4 +102,46 @@ export const NumberLiteral = [
             }
         }
     },
+]
+
+
+export const SymbolLiteral = [
+    {
+        name: 'variable.other.readwrite.nyar',
+        match: '[a-zA-Z*]',
+    },
+    /*
+    {
+        name: 'entity.name.function.nyar',
+        begin: '(?x)\\b(?=([[:alpha:]_]\\w*)\\s*(\\())',
+        end: '(\\))',
+        endCaptures: {
+            1: {
+                name: 'punctuation.definition.arguments.end.nyar'
+            }
+        },
+    },
+    */
+]
+
+
+export const MagicLiteral = [
+    {
+        name: 'support.function.magic.nyar',
+        match: '(?x)\\b(__(?:create|delete)__)\\b',
+        captures: {
+            1: {
+                name: 'support.function.magic.nyar'
+            }
+        }
+    },
+    {
+        name: 'support.variable.magic.nyar',
+        match: '(?x)\b(__(?:abs|add|hash)__)\\b',
+        captures: {
+            1: {
+                name: 'support.variable.magic.nyar'
+            }
+        }
+    }
 ]
