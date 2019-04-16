@@ -1,17 +1,8 @@
 import * as vscode from 'vscode'
-import { SuggestionClasses, Classes } from './classes'
-import { SuggestionFunctions, Functions } from './function'
-import { SuggestionKeywords, Keywords } from './keywords'
-import { SuggestionMacros, Macros } from './macros'
-import { Template_Keywords } from '../snippet/template'
-
-export const NyarLanguage = {
-    Macros: Macros,
-    Keywords: Keywords,
-    Classes: Classes.join('|').split('|'),
-    Functions: Functions.join('|').split('|'),
-    Template: Template_Keywords
-}
+import { SuggestClasses } from './classes'
+import { SuggestFunctions } from './function'
+import { SuggestKeywords } from './keywords'
+import { SuggestModules } from './modules'
 
 // the option class
 export class Completion implements vscode.CompletionItemProvider {
@@ -27,10 +18,10 @@ export class Completion implements vscode.CompletionItemProvider {
         // get suggestion results
         return new Promise(function (resolve, reject) {
             Promise.all([
-                SuggestionMacros(currentWord),
-                SuggestionKeywords(currentWord),
-                SuggestionClasses(currentWord),
-                SuggestionFunctions(currentWord),
+                SuggestKeywords(currentWord),
+                SuggestModules(currentWord),
+                SuggestClasses(currentWord),
+                SuggestFunctions(currentWord),
             ]).then(function (results) {
                 var suggestions = Array.prototype.concat.apply([], results)
                 resolve(suggestions)
