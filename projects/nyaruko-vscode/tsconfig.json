@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "include": [
-        "extension", "syntaxes/index.ts"
+        "extension", "syntaxes/index.ts", "../nyar-tmlang/source/snippet"
     ],
     "compilerOptions": {
         "outDir": "dist"

@@ -1,4 +1,4 @@
-import { AutoComplete } from '../utils'
+import { AutoComplete } from '../../../nyaruko-vscode/extension/utils'
 const Class_Declear = [
     {
         'prefix': 'Class Declare Statement',

@@ -1,4 +1,4 @@
-import { AutoComplete } from '../utils'
+import { AutoComplete } from '../../../nyaruko-vscode/extension/utils'
 
 const If_Condition = [
     {

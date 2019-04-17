@@ -1,10 +1,13 @@
 import { Syntax } from './syntax'
-import { functions, operators, keywords } from './tokens'
+import { Snippet } from "./snippet";
+import { functions, operators, keywords, build_in } from './tokens'
 
 const Tokens = {
     Functions: [].concat.apply([], Object.values(functions)),
-    operators: [].concat.apply([], Object.values(operators)),
+    Operators: [].concat.apply([], Object.values(operators)),
     Keywords: [].concat.apply([], Object.values(keywords)),
+    Modules: build_in.module,
+    Classes: build_in.class,
 }
 
-export { Syntax, Tokens }
+export { Syntax, Tokens, Snippet }

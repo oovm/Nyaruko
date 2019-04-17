@@ -2,7 +2,7 @@
     "Class Declare Statement": {
         "prefix": "Class Declare Statement",
         "body": [
-            "Class ${1:name} {",
+            "class ${1:name} {",
             "\tself=${1:name}",
             "}"
         ],
@@ -11,7 +11,7 @@
     "Class Extend Statement": {
         "prefix": "Class Extend Statement",
         "body": [
-            "Class ${1:name} Extend ${2:father} {",
+            "class ${1:name} extend ${2:father} {",
             "\tself=${1:name}",
             "\tsuper=${2:father}",
             "}"
@@ -21,7 +21,7 @@
     "Class Mixin Statement": {
         "prefix": "Class Mixin Statement",
         "body": [
-            "Class ${1:name} Mixin ${2:father} ${3:relative} {",
+            "class ${1:name} mixin ${2:father} ${3:relative} {",
             "\tself=${1:name}",
             "\tsuper=${2:father}",
             "\tmixin=${3:relative}",
@@ -59,17 +59,10 @@
         ],
         "description": "If Condition\tTrue/False/Unknow"
     },
-    "Exposing Module Symbol": {
-        "prefix": "Exposing Module Symbol",
-        "body": [
-            "expose \"${1:module}\" of { $2 }"
-        ],
-        "description": ""
-    },
     "For Range Loop": {
         "prefix": "For Range Loop",
         "body": [
-            "For $1 In range($2) {",
+            "for $1 in range($2) {",
             "\t$0",
             "}"
         ],
@@ -240,7 +233,7 @@
     "With Statement": {
         "prefix": "With Statement",
         "body": [
-            "With ${1:symbol} As ${2:alias} {",
+            "with ${1:symbol} as ${2:alias} {",
             "\t$0",
             "}"
         ],
