@@ -5,14 +5,16 @@ const keywords_raw = {
     modifier: [
         'class|extend|implicate',
         'structure|interface|new|instance',
+        'public|private|protect',
+        'define|function',
         'template',
         'macro'
     ],
     controllor: [
-        'if|else',
+        'if|else|elif',
         'switch|case',
         'for|in',
-        'while',
+        'while|do|when',
         'with',
     ],
     null: ['null'],

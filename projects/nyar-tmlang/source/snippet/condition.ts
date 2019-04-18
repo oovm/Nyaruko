@@ -1,18 +1,16 @@
-import { AutoComplete } from '../../../nyaruko-vscode/extension/utils'
-
-const If_Condition = [
+export const If_Condition = [
     {
-        'prefix': 'If Statement',
-        'body': [
+        prefix: 'If Statement',
+        body: [
             'if (${1:condition}) {',
             '\t${2:true_then}',
             '}'
         ],
-        'description': 'If Statement'
+        description: 'If Statement'
     },
     {
-        'prefix': 'If-Else Statement',
-        'body': [
+        prefix: 'If-Else Statement',
+        body: [
             'if (${1:condition}) {',
             '\t${2:true_then}',
             '}',
@@ -20,11 +18,11 @@ const If_Condition = [
             '\tfalse_then',
             '}'
         ],
-        'description': 'If-Else Statement'
+        description: 'If-Else Statement'
     },
     {
-        'prefix': 'Else-If Statement',
-        'body': [
+        prefix: 'Else-If Statement',
+        body: [
             'else if (${1:condition}) {',
             '\t${2:true_then}',
             '}',
@@ -32,26 +30,19 @@ const If_Condition = [
             '\tfalse_then',
             '}'
         ],
-        'description': 'If Condition\tTrue/False/Unknow'
+        description: 'If Condition\tTrue/False/Unknow'
     }
 ]
 
-const Switch_Condition = [
+export const Switch_Condition = [
     {
-        'prefix': 'Switch Statement',
-        'body': [
-            'switch (${1:expr}) {',
-            '\t${2:case1},',
-            '\tdo something',
-            '\t*,',
-            '\tdo default',
+        prefix: 'Switch Statement',
+        body: [
+            'switch (${1:cond}) {',
+            '\tcase: $0,',
+            '\tcase*:',
             '}'
         ],
-        'description': 'Switch Statement'
+        description: 'Switch Statement'
     }
 ]
-
-export default AutoComplete.concat(
-    If_Condition,
-    Switch_Condition
-)

@@ -1,7 +1,7 @@
-const Template = [
+export const Template = [
     {
-        'prefix': 'NeuralNetwork Layer Template',
-        'body': [
+        prefix: 'NeuralNetwork Layer Template',
+        body: [
             'Template Layer ${1:name}() {',
             '\t%%% doc',
             '\t@param: ',
@@ -19,11 +19,11 @@ const Template = [
             '\t}',
             '}'
         ],
-        'description': 'Template tp_name sym_name {}'
+        description: 'Template tp_name sym_name {}'
     },
     {
-        'prefix': 'NeuralNetwork Graph Template',
-        'body': [
+        prefix: 'NeuralNetwork Graph Template',
+        body: [
             'Template Graph ${1:name}() {',
             '\t%%% doc',
             '\t@param: ',
@@ -41,12 +41,12 @@ const Template = [
             '\t}',
             '}'
         ],
-        'description': 'Template tp_name sym_name {}'
+        description: 'Template tp_name sym_name {}'
     }
 ]
 
 const Template_Keywords = {
-    'Graph': ['Inputs', 'Outputs', 'Graph'],
+    Graph: ['Inputs', 'Outputs', 'Graph'],
     'NeuralNetwork.Graph': ['Inputs', 'Outputs', 'Graph']
 } as Record<string, string[]>
 

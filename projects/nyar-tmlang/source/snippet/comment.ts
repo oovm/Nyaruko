@@ -1,15 +1,11 @@
-const Comment = [
+export const Comment = [
     {
-        'prefix': 'Comment',
-        'body': [
+        prefix: 'Comment',
+        body: [
             '%%%',
             '$0',
             '%%%'
         ],
-        'description': 'Comment'
+        description: 'Comment'
     }
 ]
-
-
-
-export default Comment

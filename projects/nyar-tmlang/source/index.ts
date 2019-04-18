@@ -1,5 +1,5 @@
 import { Syntax } from './syntax'
-import { Snippet } from "./snippet";
+import { Snippet } from './snippet'
 import { functions, operators, keywords, build_in } from './tokens'
 
 const Tokens = {

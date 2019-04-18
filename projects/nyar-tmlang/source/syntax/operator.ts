@@ -3,7 +3,10 @@ export const Operators = [
     {
         name: 'keyword.operator.arithmetic.nyar',
         match: '(?x)(' + operators.basic.join('|') + ')',
-
+    },
+    {
+        name: 'keyword.operator.comparison.nyar',
+        match: '(?x)(' + operators.compare.join('|') + ')',
     },
     {
         name: 'keyword.operator.assignment.nyar',
@@ -18,5 +21,3 @@ export const Operators = [
         match: '(?x)(' + operators.type_assign.join('|') + ')',
     }
 ]
-
-//keyword.operator.comparison

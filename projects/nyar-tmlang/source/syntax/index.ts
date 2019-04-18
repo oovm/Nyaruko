@@ -1,7 +1,7 @@
 import { Comments } from './comment'
 import { Keywords } from './keyword'
 import { Operators } from './operator'
-import { StringLiteral, NumberLiteral } from './literal'
+import { StringLiteral, NumberLiteral, SymbolLiteral, MagicLiteral } from './literal'
 
 interface patterns {
     name: string
@@ -24,7 +24,6 @@ export const Syntax = {
     ],
     patterns: cases
         .concat(Keywords, Operators)
-        .concat(StringLiteral, NumberLiteral)
+        .concat(StringLiteral, NumberLiteral, SymbolLiteral, MagicLiteral)
         .sort((a, b) => { return ('' + a.name).localeCompare(b.name) })
 }
-console.log(Syntax)

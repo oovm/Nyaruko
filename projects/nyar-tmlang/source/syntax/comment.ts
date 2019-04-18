@@ -1,6 +1,30 @@
 export const Comments = [
     {
-        name: 'comment.nyar',
+        name: 'comment.line.nyar',
+        begin: '#!',
+        end: '^',
+        beginCaptures: {
+            0: {
+                name: 'punctuation.definition.comment.nyar'
+            }
+        },
+        patterns: [
+            {
+                include: 'text.html.markdown'
+            }
+        ]
+    },
+    {
+        name: 'comment.line.shebang.ts',
+        match: '\\A(#!).*(?=$)',
+        captures: {
+            1: {
+                name: 'punctuation.definition.comment.nyar'
+            }
+        }
+    },
+    {
+        name: 'comment.block.nyar',
         begin: '(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)',
         end: '(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$',
         beginCaptures: {

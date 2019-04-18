@@ -19,6 +19,7 @@ const operators_raw = {
         '!',
     ],
     postfix: [
+        '#',
         '!',
     ],
     assign: [

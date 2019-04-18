@@ -92,13 +92,13 @@ export const NumberLiteral = [
         match: '(?x)(?<![\\w\\.])(?:[1-9](?:_?[0-9])*|0+|[0-9](?:_?[0-9])*([jJ])|0([0-9]+)(?![eE\\.]))\\b',
         captures: {
             1: {
-                'name': 'storage.type.imaginary.number.nyar'
+                name: 'storage.type.imaginary.number.nyar'
             },
             2: {
-                'name': 'invalid.illegal.dec.nyar'
+                name: 'invalid.illegal.dec.nyar'
             },
             3: {
-                'name': 'invalid.illegal.dec.nyar'
+                name: 'invalid.illegal.dec.nyar'
             }
         }
     },
