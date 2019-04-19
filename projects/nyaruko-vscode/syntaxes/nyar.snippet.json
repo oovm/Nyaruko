@@ -59,6 +59,13 @@
         ],
         "description": "If Condition\tTrue/False/Unknow"
     },
+    "Exposing Module Symbol": {
+        "prefix": "Exposing Module Symbol",
+        "body": [
+            "expose \"${1:module}\" of { $2 }"
+        ],
+        "description": ""
+    },
     "For Range Loop": {
         "prefix": "For Range Loop",
         "body": [
@@ -108,50 +115,6 @@
         ],
         "description": "Log to the console"
     },
-    "NeuralNetwork Graph Template": {
-        "prefix": "NeuralNetwork Graph Template",
-        "body": [
-            "Template Graph ${1:name}() {",
-            "\t%%% doc",
-            "\t@param: ",
-            "\t@return: Class ${1:name} Extends NeuralNetwork.Graph",
-            "\t%%%",
-            "\t${0:defitions}",
-            "\tInputs {",
-            "\t\tInput::Tensor<[], Real32>",
-            "\t}",
-            "\tOutputs {",
-            "\t\tOutput::Tensor<[], Real32>",
-            "\t}",
-            "\tGraph {",
-            "\t\tInput > Output",
-            "\t}",
-            "}"
-        ],
-        "description": "Template tp_name sym_name {}"
-    },
-    "NeuralNetwork Layer Template": {
-        "prefix": "NeuralNetwork Layer Template",
-        "body": [
-            "Template Layer ${1:name}() {",
-            "\t%%% doc",
-            "\t@param: ",
-            "\t@return: Class ${1:name} Extends NeuralNetwork.Layer",
-            "\t%%%",
-            "\t${0:defitions}",
-            "\tInputs {",
-            "\t\tInput::Tensor<[], Real32>",
-            "\t}",
-            "\tOutputs {",
-            "\t\tOutput::Tensor<[], Real32>",
-            "\t}",
-            "\tLayer {",
-            "\t\tInput > Output",
-            "\t}",
-            "}"
-        ],
-        "description": "Template tp_name sym_name {}"
-    },
     "Property Getter": {
         "prefix": "Property Getter",
         "body": [
@@ -173,11 +136,9 @@
     "Switch Statement": {
         "prefix": "Switch Statement",
         "body": [
-            "switch (${1:expr}) {",
-            "\t${2:case1},",
-            "\tdo something",
-            "\t*,",
-            "\tdo default",
+            "switch (${1:cond}) {",
+            "\tcase: $0,",
+            "\tcase*:",
             "}"
         ],
         "description": "Switch Statement"
@@ -194,10 +155,10 @@
         "prefix": "Try-Catch Statement",
         "body": [
             "try (",
-            "\t$0",
+            "\t",
             ")",
             "catch(${1:error}) { ",
-            "\t",
+            "\t$0",
             "}"
         ],
         "description": "Try-Catch Statement"
@@ -205,7 +166,7 @@
     "Using Include Statement": {
         "prefix": "Using Include Statement",
         "body": [
-            "using \"${1:def}\" instance"
+            "using \"${1:def}\" ^"
         ],
         "description": "Using Definition Instance"
     },
