@@ -9,11 +9,13 @@
         "vscode": "^1.32.1"
     },
     "categories": [
+        "Extension Packs",
         "Snippets"
     ],
     "scripts": {
         "vscode:prepublish": "yarn run compile",
-        "build": "webpack --config webpack.config.js",
+        "pack": "webpack --config webpack.config.js ./",
+        "build": "tsc -b && ts-node ./syntaxes/snippet.ts",
         "watch": "tsc -watch -p ./",
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
@@ -58,5 +60,8 @@
     },
     "activationEvents": [
         "*"
+    ],
+    "extensionDependencies": [
+        "ionutvmi.path-autocomplete"
     ]
 }

@@ -7,8 +7,7 @@
         "dev": "tsc -b && vuepress dev .",
         "build": "tsc -b && vuepress build . --no-cache"
     },
-    "dependencies": {},
-    "devDependencies": {
-        "vuepress": "^1.0.0-alpha.44"
+    "dependencies": {
+        "vuepress": "^1.2.0"
     }
 }
