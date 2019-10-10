@@ -108,7 +108,7 @@ export const NumberLiteral = [
 export const SymbolLiteral = [
     {
         name: 'variable.other.readwrite.nyar',
-        match: '[a-zA-Z*]',
+        match: '\\b([a-zA-Z_]*)\\b',
     },
     /*
     {
@@ -127,21 +127,7 @@ export const SymbolLiteral = [
 
 export const MagicLiteral = [
     {
-        name: 'support.function.magic.nyar',
-        match: '(?x)\\b(__(?:create|delete)__)\\b',
-        captures: {
-            1: {
-                name: 'support.function.magic.nyar'
-            }
-        }
-    },
-    {
-        name: 'support.variable.magic.nyar',
-        match: '(?x)\b(__(?:abs|add|hash)__)\\b',
-        captures: {
-            1: {
-                name: 'support.variable.magic.nyar'
-            }
-        }
+        name: 'support.magic.nyar',
+        match: '\\b(__(?:[0-9a-zA-Z_])__)\\b',
     }
 ]

@@ -7,6 +7,7 @@ const operators_raw = {
         '/', '÷',
         '^', '√',
         '@',
+        '~',
         ':',
         '$',
     ],
@@ -24,14 +25,14 @@ const operators_raw = {
     ],
     assign: [
         '=',
-        '.=',
+        '.=', '#=',
     ],
     lazy_assign: [':='],
     type_assign: ['::'],
 }
 
 function regexEscape(source: string) {
-    const escaped_char = '^$()[]{}*.?+\\|'
+    const escaped_char = '^$()[]{}*.?+|#\\'
     return source.split('')
         .map(char => { return escaped_char.includes(char) ? '\\' + char : char })
         .join('')

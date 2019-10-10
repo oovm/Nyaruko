@@ -1,21 +1,19 @@
 # Module & Namespace
 
-Using, Exposing 体系
+using, Exposing 体系
 
 有模块载入, 符号载入和头文件载入
 
 一般不建议使用头文件
 
-
 ## 导入模块
 
 ```ts
-Using module;
-Using "./utils" As ;
+using module;
+using "./utils" as ;
 
 module.function()
 ```
-
 
 寻路原则
 
@@ -23,32 +21,28 @@ module.function()
 
 路径必须加字符串, 以 "./" 开头表示本路径.
 
-
-
 @ 开头的
 
-此处不能使用 `File` 对象(因为还没定义),  必须使用 unix 式字符串
-
-
+此处不能使用 `File` 对象(因为还没定义), 必须使用 unix 式字符串
 
 ### 使用模块别称
 
 ```ts
-Using module As alias;
+using module as alias;
 
 %%%
 ✔️alias.function()
-❌module.function() 
+❌module.function()
 %%%
 ```
 
 ### 使用模块符号
 
 ```ts
-Using module With {function As f, symbol, class};
+using module With {function as f, symbol, class};
 
-%%% 
-✔️module.function() 
+%%%
+✔️module.function()
 ❌function()
 ✔️f()
 %%%
@@ -57,10 +51,10 @@ Using module With {function As f, symbol, class};
 ### 使用模块所有符号
 
 ```ts
-Using module All;
+using module All;
 
-%%% 
-✔️module.function() 
+%%%
+✔️module.function()
 ✔️function()
 %%%
 ```
@@ -68,10 +62,10 @@ Using module All;
 ### 加载头文件
 
 ```ts
-Using "head.n" Instance;
+using "head.n" Instance;
 
-%%% 
-❌️module.function() 
+%%%
+❌️module.function()
 ✔️function()
 %%%
 ```
@@ -79,7 +73,7 @@ Using "head.n" Instance;
 ## 导出符号
 
 ```ts
-Exposing { function As f, symbol, class };
+Exposing { function as f, symbol, class };
 ```
 
 如果不带 Exposing 这个文件将被视为空文件.
@@ -90,7 +84,7 @@ Exposing { function As f, symbol, class };
 
 ```ts
 Exposing "./utils";
-Exposing "./src" With {function As f} 
+Exposing "./src" With {function as f}
 ```
 
 注意符号的模块路由会被更改为本文件
@@ -103,7 +97,7 @@ Nyar 中没有类似 ES 中 ` 的中继用法
 
 除关键词以外的符号名都能作为模块名或别称
 
-模块冲突会立即报错终止运行. 
+模块冲突会立即报错终止运行.
 
 已经被用掉的模块名有:
 

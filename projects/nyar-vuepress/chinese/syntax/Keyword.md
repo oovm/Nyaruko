@@ -5,7 +5,7 @@
 关键词宏机制是这样的:
 
 1. Nyar 与 JS 类似被设定成可以被压缩成一行的语言.
-2. 同样的我们使用 `; ` 来隔开行或区分歧义, 一般使用是不需要加 `; ` 的.
+2. 同样的我们使用 `;` 来隔开行或区分歧义, 一般使用是不需要加 `;` 的.
 3. `{ }` 对是不能单独存在的, 必定有一个宏对应.
 4. 从 StartOfLine(SOL) 开始检测, 如果有 `{` 计数 +1, `}` 计数 -1, 减到 0 确定一个宏.
 5. 宏最多有触发器 `(Macro)` , 捕捉域 `(Statement)` , 辅助宏 `(Sub_Macro)` , 作用域 `(Scope)` 四个部分.
@@ -16,8 +16,8 @@
 
 ```ts
 Include (setting.nyar)
-Import module As m
-Class test {
+Import module as m
+class test {
     Macro state1 state2 Sub_Macro state3 state4 {
         s = 0
         For (x, y) In range(1, 5) {
@@ -27,7 +27,7 @@ Class test {
 }
 ```
 
-这里的 Include, Import As, Class , Macro, For In 属于关键词, 关键词几乎都有不带辅助关键词的版本
+这里的 Include, Import As, class , Macro, For In 属于关键词, 关键词几乎都有不带辅助关键词的版本
 
 - **Macro 的概念来自 Lisp Macro, Lisp 宏当然都是这么霸道的**
 
@@ -48,10 +48,10 @@ Nyar 对 Symbol 的态度与 Mathematica 类似, 不区分宏, 函数, 变量之
 ```ts
 Macro Symbol Pattern := Scope {
     %%% doc
-        f(a*::Number, b*::Number) => Number := a + b 
-    ==> complex macro expand 
+        f(a*::Number, b*::Number) => Number := a + b
+    ==> complex macro expand
     ==> Definition(
-            Typed(f, Transformed(Tuple(Type(Number), Type(Number)), Type(Number))), 
+            Typed(f, Transformed(Tuple(Type(Number), Type(Number)), Type(Number))),
             SetDelayed(f(Pattern(a, Blank()), Pattern(b, Blank())), Plus(a, b))
         )
     %%%
@@ -68,7 +68,7 @@ Return 一般由模板的创造者规定, 函数和变量会被先执行, 然后
 
 有子模板存在, 子模板就只能有个模板名了, 一般来说是 json 对象.
 
-模板作为宏的替代品而存在, 
+模板作为宏的替代品而存在,
 
 ```ts
 Template module.tp_name sym_name {
@@ -88,7 +88,7 @@ Template module.tp_name sym_name {
 
 ```ts
 %%% 类宏一般有如下模板宏 %%%
-Class A Extents B {
+class A Extents B {
     Constructor (a*) {
         %%% 构造函数, 注意空格, 函数是没有空格的 %%%
     }
@@ -125,7 +125,7 @@ Class A Extents B {
 
 ## Module
 
- `Using` 和 `Exposing` 用于管理模块, `As` 用于指定 `Alias` 
+`using` 和 `Exposing` 用于管理模块, `As` 用于指定 `Alias`
 
 ## Literal
 
@@ -174,19 +174,19 @@ S=Keyword.Statement, P=Keyword.Scope
 
 - 算符宏(Operate) 算符宏给出其 Lisp 表达式
 
-  - Type S P 
+  - Type S P
   - **(s::t)>>(:: s t)**
-  - Type S P={S To S} 
+  - Type S P={S To S}
   - **(f::t=>t)>>(:: f t => t)**
-  - Set S To S 
+  - Set S To S
   - **(f=s)>>(= f s)**
-  - SetDelayed S P 
+  - SetDelayed S P
   - **(f:=g)>>(:= f g)**
-  - SetDelayed S P={S To S} 
+  - SetDelayed S P={S To S}
   - **(f(x\*):=x)>>(:= f x\* x)**
-  - Lambda P={S To S} 
+  - Lambda P={S To S}
   - **(lambda => expr)>>(=> lambda To expr)**
-</p>
+    </p>
 
 - 模板宏(Template)
 
@@ -195,8 +195,8 @@ S=Keyword.Statement, P=Keyword.Scope
 
 - 类定义(Class)
 
-  - Class S P
-  - Class S Extents S P
+  - class S P
+  - class S Extents S P
   - Constructor S P
   - Setter S P
   - Getter S P
@@ -208,16 +208,16 @@ S=Keyword.Statement, P=Keyword.Scope
   - ~~Static P~~
   - ~~Final P~~
 
-- 载入宏(Using)
+- 载入宏(using)
 
-  - Using S
-  - Using S As S
-  - Using S With P={S As S, S As S}
-  - Using S All
-  - Using S Instance
+  - using S
+  - using S as S
+  - using S With P={S as S, S as S}
+  - using S All
+  - using S Instance
 
 - 导出宏(Exposing)
 
   - Exposing S
-  - Exposing S As S
-  - Exposing S With P={S As S, S As S}
+  - Exposing S as S
+  - Exposing S With P={S as S, S as S}
