@@ -131,3 +131,26 @@ export const MagicLiteral = [
         match: '\\b(__(?:[0-9a-zA-Z_])__)\\b',
     }
 ]
+
+
+export const Head = {
+    "name": "Valkyrie",
+    "scopeName": "source.nyar",
+    "version": "v0.0.1",
+    "uuid": "",
+    "information_for_contributors": [
+        "aster: galaster@foxmail.com"
+    ],
+    "firstLineMatch": "^#!/.*\\b\\w*nyar\\b",
+    "foldingStartMarker": "/\\*\\*|\\{\\s*$",
+    "foldingStopMarker": "\\*\\*/|^\\s*\\}",
+    "keyEquivalent": "^~S",
+    "fileTypes": [
+        "nyar"
+    ],
+    "patterns": [
+        {
+            "include": "#code"
+        }
+    ],
+    }

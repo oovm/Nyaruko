@@ -1,0 +1,5 @@
+__magic__
+__funcion__
+__new__
+__getFunction__
+__getName__
