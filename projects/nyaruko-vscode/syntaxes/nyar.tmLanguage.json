@@ -6,10 +6,6 @@
     "information_for_contributors": [
         "aster: galaster@foxmail.com"
     ],
-    "firstLineMatch": "^#!/.*\\b\\w*nyar\\b",
-    "foldingStartMarker": "/\\*\\*|\\{\\s*$",
-    "foldingStopMarker": "\\*\\*/|^\\s*\\}",
-    "keyEquivalent": "^~S",
     "fileTypes": [
         "nyar"
     ],
@@ -22,93 +18,26 @@
         "code": {
             "patterns": [
                 {
-                    "include": "#script-header"
+                    "include": "#Shebang"
                 },
                 {
-                    "include": "#declarations"
+                    "include": "#Comment"
                 },
                 {
-                    "include": "#initialization"
+                    "include": "#String"
                 },
                 {
-                    "include": "#inheritance"
+                    "include": "#Constant"
                 },
                 {
-                    "include": "#comments"
+                    "include": "#DotCall"
                 },
                 {
-                    "include": "#strings"
-                },
-                {
-                    "include": "#GenericWhere"
-                },
-                {
-                    "include": "#GenericParametric"
-                },
-                {
-                    "include": "#Call"
-                },
-                {
-                    "include": "#Annotations"
-                },
-                {
-                    "include": "#keywords"
-                },
-                {
-                    "include": "#constants"
-                },
-                {
-                    "include": "#char-literal"
-                },
-                {
-                    "include": "#parameter-list"
-                },
-                {
-                    "include": "#StructureName"
-                },
-                {
-                    "include": "#ReservedName"
-                },
-                {
-                    "include": "#VariableName"
-                },
-                {
-                    "include": "#backQuotedVariable"
-                },
-                {
-                    "include": "#meta-brackets"
-                },
-                {
-                    "include": "#meta-bounds"
+                    "include": "#Keyword"
                 }
             ]
         },
-        "constants": {
-            "patterns": [
-                {
-                    "match": "\\b(false|null|true)\\b",
-                    "name": "constant.language.nyar"
-                },
-                {
-                    "match": "(\\(\\))",
-                    "captures": {
-                        "1": {
-                            "name": "meta.bracket.nyar"
-                        }
-                    },
-                    "name": "meta.parentheses.nyar"
-                },
-                {
-                    "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.[0-9]+)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?|[0-9]+)([LlFfDd]|UL|ul)?\\b",
-                    "name": "constant.numeric.nyar"
-                },
-                {
-                    "match": "\\b(self|super)\\b",
-                    "name": "variable.language.nyar"
-                }
-            ]
-        },
-        "script-header": {
+        "Shebang": {
             "match": "^#!(.*)$",
             "captures": {
                 "1": {
@@ -117,87 +46,121 @@
             },
             "name": "comment.block.shebang.nyar"
         },
-        "strings": {
+        "Comment": {
             "patterns": [
                 {
-                    "end": "\"\"\"(?!\")",
-                    "begin": "\"\"\"",
+                    "name": "comment.block.nyar",
+                    "begin": "(^|\\G)(\\s*)(%{3,})\\s*(?=([^%]*)?$)",
+                    "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
                     "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.begin.nyar"
+                        "3": {
+                            "name": "punctuation.definition.comment"
+                        },
+                        "4": {
+                            "name": "punctuation.definition.comment"
+                        }
+                    },
+                    "endCaptures": {
+                        "3": {
+                            "name": "punctuation.definition.comment"
                         }
                     },
                     "patterns": [
                         {
-                            "match": "\\\\\\\\|\\\\u[0-9A-Fa-f]{4}",
-                            "name": "constant.character.escape.nyar"
+                            "include": "text.html.markdown"
                         }
-                    ],
-                    "endCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.end.nyar"
-                        }
-                    },
-                    "name": "string.quoted.triple.nyar"
+                    ]
                 },
                 {
-                    "begin": "\\b([A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}]+)(\"\"\")",
-                    "end": "\"\"\"(?!\")",
+                    "begin": "(^[ \\t]+)?(?=///)",
                     "beginCaptures": {
                         "1": {
-                            "name": "keyword.interpolation.nyar"
-                        },
-                        "2": {
-                            "name": "string.quoted.triple.interpolated.nyar punctuation.definition.string.begin.nyar"
+                            "name": "punctuation.whitespace.comment.leading.nyar"
                         }
                     },
+                    "end": "(?!\\G)",
                     "patterns": [
                         {
-                            "include": "#string-interpolation"
-                        },
-                        {
-                            "match": "\\\\\\\\|\\\\u[0-9A-Fa-f]{4}",
-                            "name": "constant.character.escape.nyar"
-                        },
-                        {
-                            "match": ".",
-                            "name": "string.quoted.triple.interpolated.nyar"
+                            "begin": "///",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.nyar"
+                                }
+                            },
+                            "end": "\\n",
+                            "name": "comment.line.warning.nyar"
                         }
-                    ],
-                    "endCaptures": {
-                        "0": {
-                            "name": "string.quoted.triple.interpolated.nyar punctuation.definition.string.end.nyar"
-                        }
-                    }
+                    ]
                 },
                 {
-                    "end": "\"",
-                    "begin": "\"",
+                    "begin": "(^[ \\t]+)?(?=//!)",
+                    "end": "(?!\\G)",
                     "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.begin.nyar"
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.nyar"
                         }
                     },
                     "patterns": [
                         {
-                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
-                            "name": "constant.character.escape.nyar"
-                        },
-                        {
-                            "match": "\\\\.",
-                            "name": "invalid.illegal.unrecognized-string-escape.nyar"
+                            "end": "\\n",
+                            "begin": "//!",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.nyar"
+                                }
+                            },
+                            "name": "comment.line.warning.nyar"
                         }
-                    ],
-                    "endCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.end.nyar"
-                        }
-                    },
-                    "name": "string.quoted.double.nyar"
+                    ]
                 },
                 {
-                    "begin": "\\b([A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}]+)(\")",
-                    "end": "\"",
+                    "begin": "(^[ \\t]+)?(?=//\\?)",
+                    "end": "(?!\\G)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "end": "\\n",
+                            "begin": "//\\?",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.nyar"
+                                }
+                            },
+                            "name": "comment.line.warning.nyar"
+                        }
+                    ]
+                },
+                {
+                    "begin": "(^[ \\t]+)?(?=//\\*)",
+                    "end": "(?!\\G)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "end": "\\n",
+                            "begin": "//\\*",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.nyar"
+                                }
+                            },
+                            "name": "comment.line.warning.nyar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "String": {
+            "patterns": [
+                {
+                    "begin": "(f?)(\")",
                     "beginCaptures": {
                         "1": {
                             "name": "keyword.interpolation.nyar"
@@ -206,6 +169,12 @@
                             "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.begin.nyar"
                         }
                     },
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.end.nyar"
+                        }
+                    },
+                    "end": "\"",
                     "patterns": [
                         {
                             "include": "#string-interpolation"
@@ -222,12 +191,159 @@
                             "match": ".",
                             "name": "string.quoted.double.interpolated.nyar"
                         }
-                    ],
+                    ]
+                },
+                {
+                    "begin": "(f?)(')",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.nyar"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.begin.nyar"
+                        }
+                    },
                     "endCaptures": {
                         "0": {
                             "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.end.nyar"
                         }
-                    }
+                    },
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "include": "#string-interpolation"
+                        },
+                        {
+                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                            "name": "constant.character.escape.nyar"
+                        },
+                        {
+                            "match": "\\\\.",
+                            "name": "invalid.illegal.unrecognized-string-escape.nyar"
+                        },
+                        {
+                            "match": ".",
+                            "name": "string.quoted.double.interpolated.nyar"
+                        }
+                    ]
+                },
+                {
+                    "begin": "(c)(\")",
+                    "end": "\"|$",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.nyar"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.character.begin.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                            "name": "constant.character.escape.nyar"
+                        },
+                        {
+                            "match": "\\\\.",
+                            "name": "invalid.illegal.unrecognized-character-escape.nyar"
+                        },
+                        {
+                            "match": "[^\"]{2,}",
+                            "name": "invalid.illegal.character-literal-too-long"
+                        },
+                        {
+                            "match": "(?<!\")[^\"]",
+                            "name": "invalid.illegal.character-literal-too-long"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.character.end.nyar"
+                        }
+                    },
+                    "name": "string.quoted.other constant.character.literal.nyar"
+                },
+                {
+                    "begin": "(c)(')",
+                    "end": "'|$",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.nyar"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.character.begin.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                            "name": "constant.character.escape.nyar"
+                        },
+                        {
+                            "match": "\\\\.",
+                            "name": "invalid.illegal.unrecognized-character-escape.nyar"
+                        },
+                        {
+                            "match": "[^']{2,}",
+                            "name": "invalid.illegal.character-literal-too-long"
+                        },
+                        {
+                            "match": "(?<!')[^']",
+                            "name": "invalid.illegal.character-literal-too-long"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.character.end.nyar"
+                        }
+                    },
+                    "name": "string.quoted.other constant.character.literal.nyar"
+                },
+                {
+                    "begin": "\\b(\\w+)(\")",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.nyar"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.begin.nyar"
+                        }
+                    },
+                    "end": "\"",
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.end.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": ".",
+                            "name": "string.quoted.double.interpolated.nyar"
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\b(\\w+)(')",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.nyar"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.begin.nyar"
+                        }
+                    },
+                    "end": "'",
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.quoted.double.interpolated.nyar punctuation.definition.string.end.nyar"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": ".",
+                            "name": "string.quoted.double.interpolated.nyar"
+                        }
+                    ]
                 }
             ]
         },
@@ -267,15 +383,75 @@
                 }
             ]
         },
-        "meta-colons": {
+        "Constant": {
             "patterns": [
                 {
-                    "match": "(?<!:):(?!:)",
-                    "name": "meta.colon.nyar"
+                    "match": "\\b(false|null|true)\\b",
+                    "name": "constant.language.nyar"
+                },
+                {
+                    "match": "\\b(?:0[xX][0-9a-fA-F]+)\\b",
+                    "name": "constant.numeric.nyar"
+                },
+                {
+                    "match": "\\b(?:0[oO][0-7]+)\\b",
+                    "name": "constant.numeric.nyar"
+                },
+                {
+                    "match": "\\b(?:0[bB][0-1]+)\\b",
+                    "name": "constant.numeric.nyar"
+                },
+                {
+                    "match": "\\b([0-9](?:[_]?[0-9]+)*(?:[.](?:[_]?[0-9]+)+))(\\w+)?\\b",
+                    "captures": {
+                        "1": {
+                            "name": "constant.numeric.nyar"
+                        },
+                        "2": {
+                            "name": "meta.function-call.generic.python"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b([0-9](?:[_]?[0-9]+)*)(\\w+)?\\b",
+                    "captures": {
+                        "1": {
+                            "name": "constant.numeric.nyar"
+                        },
+                        "2": {
+                            "name": "meta.function-call.generic.python"
+                        }
+                    }
                 }
             ]
         },
-        "keywords": {
+        "DotCall": {
+            "patterns": [
+                {
+                    "match": "(\\.)([:\\w]+)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.separator.period.nyar"
+                        },
+                        "2": {
+                            "patterns": [
+                                {
+                                    "include": "#StructureName"
+                                },
+                                {
+                                    "include": "#ReservedName"
+                                },
+                                {
+                                    "match": "\\w+",
+                                    "name": "meta.function-call.generic.python"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "Keyword": {
             "patterns": [
                 {
                     "match": "\\b(return|throw|pass|break)\\b",
@@ -290,19 +466,6 @@
                     "name": "keyword.control.exception.nyar"
                 },
                 {
-                    "match": "(=|.=|@=|:=|:)",
-                    "name": "keyword.operator.assignment.nyar"
-                },
-                {
-                    "match": "(==|!=|<=|>=|<>|<|>)",
-                    "name": "keyword.operator.comparison.nyar"
-                },
-
-                {
-                    "match": "(!|&&|\\|)",
-                    "name": "keyword.operator.comparison.python"
-                },
-                {
                     "match": "\\b(in|and|or|has|is)\\s",
                     "name": "keyword.operator.logical.python"
                 },
@@ -311,8 +474,8 @@
                     "name": "keyword.operator.logical.python"
                 },
                 {
-                    "match": "(<-|↝|->|→|=>|⇒|\\?|\\:+|@|\\|)",
-                    "name": "keyword.operator.nyar"
+                    "match": "\\b(self|super)\\s",
+                    "name": "keyword.operator.logical.python"
                 }
             ]
         },
@@ -466,32 +629,6 @@
                 }
             }
         },
-        "Call": {
-            "patterns": [
-                {
-                    "match": "(\\.)([:\\w]+)",
-                    "captures": {
-                        "1": {
-                            "name": "punctuation.separator.period.nyar"
-                        },
-                        "2": {
-                            "patterns": [
-                                {
-                                    "include": "#StructureName"
-                                },
-                                {
-                                    "include": "#ReservedName"
-                                },
-                                {
-                                    "match": "\\w+",
-                                    "name": "meta.function-call.generic.python"
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
         "Annotations": {
             "patterns": [
                 {
@@ -545,39 +682,6 @@
                     }
                 }
             ]
-        },
-        "char-literal": {
-            "begin": "'",
-            "end": "'|$",
-            "beginCaptures": {
-                "0": {
-                    "name": "punctuation.definition.character.begin.nyar"
-                }
-            },
-            "patterns": [
-                {
-                    "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
-                    "name": "constant.character.escape.nyar"
-                },
-                {
-                    "match": "\\\\.",
-                    "name": "invalid.illegal.unrecognized-character-escape.nyar"
-                },
-                {
-                    "match": "[^']{2,}",
-                    "name": "invalid.illegal.character-literal-too-long"
-                },
-                {
-                    "match": "(?<!')[^']",
-                    "name": "invalid.illegal.character-literal-too-long"
-                }
-            ],
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.character.end.nyar"
-                }
-            },
-            "name": "string.quoted.other constant.character.literal.nyar"
         },
         "initialization": {
             "match": "\\b(new)\\s+([^\\s,\\{\\}\\(\\)\\[\\]]+)",
@@ -636,97 +740,6 @@
         "meta-bounds": {
             "match": "<%|=:=|<:<|<%<|>:|<:",
             "name": "meta.bounds.nyar"
-        },
-        "comments": {
-            "patterns": [
-                {
-                    "include": "#block-comments"
-                },
-                {
-                    "begin": "(^[ \\t]+)?(?=///)",
-                    "end": "(?!\\G)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "punctuation.whitespace.comment.leading.nyar"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "end": "\\n",
-                            "begin": "///",
-                            "beginCaptures": {
-                                "0": {
-                                    "name": "punctuation.definition.comment.nyar"
-                                }
-                            },
-                            "name": "comment.line.normal.nyar"
-                        }
-                    ]
-                },
-                {
-                    "begin": "(^[ \\t]+)?(?=//!)",
-                    "end": "(?!\\G)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "punctuation.whitespace.comment.leading.nyar"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "end": "\\n",
-                            "begin": "//!",
-                            "beginCaptures": {
-                                "0": {
-                                    "name": "punctuation.definition.comment.nyar"
-                                }
-                            },
-                            "name": "comment.line.warning.nyar"
-                        }
-                    ]
-                },
-                {
-                    "begin": "(^[ \\t]+)?(?=//\\?)",
-                    "end": "(?!\\G)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "punctuation.whitespace.comment.leading.nyar"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "end": "\\n",
-                            "begin": "//\\?",
-                            "beginCaptures": {
-                                "0": {
-                                    "name": "punctuation.definition.comment.nyar"
-                                }
-                            },
-                            "name": "comment.line.warning.nyar"
-                        }
-                    ]
-                },
-                {
-                    "begin": "(^[ \\t]+)?(?=//\\*)",
-                    "end": "(?!\\G)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "punctuation.whitespace.comment.leading.nyar"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "end": "\\n",
-                            "begin": "//\\*",
-                            "beginCaptures": {
-                                "0": {
-                                    "name": "punctuation.definition.comment.nyar"
-                                }
-                            },
-                            "name": "comment.line.warning.nyar"
-                        }
-                    ]
-                }
-            ]
         },
         "block-comments": {
             "patterns": [
